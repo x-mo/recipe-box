@@ -1,4 +1,6 @@
 const express = require('express');
+const Joi = require('joi');
+var user = require('./user');
 const app = express();
 
 app.use(express.json());
@@ -18,16 +20,26 @@ app.get('/api/recipes',(req,res) => {
   res.send([1,2,3,4]);
 })
 
-app.get('/api/recipes/:id',(req,res) => {
+app.get('/recipes/:id',(req,res) => {
   //res.send(req.params.id);
   //res.send(req.query);
   const recipe = recipes.find(c => c.id === parseInt(req.params.id));
   if(!recipe) res.status(404).send('The requested recipe is not found!');
   res.send(recipe);
-})
+});
 
 
-app.post('/api/recipes',(req,res) => {
+app.post('/users',(req,res) => {
+  const result = Joi.validate(req.body, user);
+  if(result.error){
+      res.status(400).send(result.error.details[0].message);
+  }
+  else {
+    console.log(result);
+  }
+});
+
+app.post('/recipes',(req,res) => {
   var recipe = {
     id: recipes.length +1,
     name: req.body.name,
