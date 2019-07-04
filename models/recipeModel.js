@@ -14,11 +14,8 @@ const recipeSchema = new mongoose.Schema({
     email: String
 });
 
-const RecipeSchema = mongoose.model('Recipe',recipeSchema);
-
-recipeSchema.methods.getFullName = function () {
-    return this.firstName + this.lastName;
-}
+const RecipeModel = mongoose.model('Recipe',recipeSchema);
 
 
-module.exports = RecipeSchema;
+
+module.exports = RecipeModel;

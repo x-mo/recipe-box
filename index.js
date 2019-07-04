@@ -1,8 +1,11 @@
 const express = require('express');
 var usersRouter = require('./routes/usersRouter');
 var recipesRouter = require('./routes/recipesRouter');
+var bodyParser = require('body-parser');
+
 const app = express();
 
+app.use(bodyParser.urlencoded());
 app.use(express.json());
 
 app.set('view engine', 'ejs');
