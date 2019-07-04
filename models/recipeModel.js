@@ -1,21 +1,24 @@
 const Joi = require('joi');
 const mongoose  = require('mongoose');
 
+mongoose.connect('mongodb://localhost/recipe-box')
+.then(()=>console.log('Connected to MongoDB ...'))
+.catch(err => console.log(err));
+
+
 const Recipe  = {
-  username: Joi.string().alphanum().min(3).max(30).required(),
-    password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/),
-    birthyear: Joi.number().integer().min(1900).max(2013),
-    email: Joi.string().email({ minDomainSegments: 2 })
+    recipeName: Joi.string().alphanum().min(3).max(30).required(),
+    recipeItems: {},
+    recipePrice: Joi.number()})
 }
 const recipeSchema = new mongoose.Schema({
-  username: String,
-    password: String,
-    birthyear: Date,
-    email: String
+    recipeName: String,
+    recipeItems:{},
+    recipePrice: Number,
 });
 
 const RecipeModel = mongoose.model('Recipe',recipeSchema);
 
 
-
-module.exports = RecipeModel;
+module.exports.Recipe = Recipe;
+module.exports.RecipeModel = RecipeModel;

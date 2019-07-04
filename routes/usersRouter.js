@@ -21,7 +21,7 @@ usersRouter.post('/registration',(req,res,next) => {
     const newUser = new UserModel.UserModel(req.body);
     newUser.save()
     .then(item => {
-      res.send("item saved to database");
+      res.send("new user saved to database");
     })
     .catch(err => {
       res.status(400).send("unable to save to database");
