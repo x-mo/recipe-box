@@ -9,7 +9,7 @@ usersRouter.get('/',(req,res,next) => {
 });
 
 usersRouter.get('/login',(req,res,next) => {
-  res.render('pages/login');
+  res.render('pages/users/login');
 });
 
 usersRouter.post('/login',(req,res,next) => {
@@ -30,7 +30,7 @@ usersRouter.post('/login',(req,res,next) => {
 });
 
 usersRouter.get('/registration',(req,res,next) => {
-  res.render('pages/registration');
+  res.render('pages/users/registration');
 })
 
 usersRouter.post('/registration',(req,res,next) => {

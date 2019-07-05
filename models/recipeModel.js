@@ -1,14 +1,16 @@
 const Joi = require('joi');
 const mongoose  = require('mongoose');
-
+const IngrediantModel = require('./ingrediantModel');
+const ingrediantSchema = IngrediantModel.Ingrediant;
 const Recipe  = {
     recipeName: Joi.string().alphanum().min(3).max(30).required(),
-    recipeItems: {},
+    recipeIngr: {},
     recipePrice: Joi.number()
 }
+
 const recipeSchema = new mongoose.Schema({
     recipeName: String,
-    recipeItems:{},
+    recipeIngr: {ingrediantSchema},
     recipePrice: Number,
 });
 
