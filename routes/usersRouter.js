@@ -45,7 +45,7 @@ usersRouter.post('/registration',(req,res,next) => {
       res.send("new user saved to database");
     })
     .catch(err => {
-      res.status(400).send("unable to save to database");
+      res.status(400).send(err.errmsg);
     });
   }
 });

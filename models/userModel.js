@@ -14,14 +14,14 @@ const User  = {
 
 const LoginUser  = {
   email: Joi.string().email({ minDomainSegments: 2 }),
-    password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/)
+    password: Joi.string()
 }
 
 const userSchema = new mongoose.Schema({
-  username: String,
+    username: { type: String, index: { unique: true }},
     password: String,
     birthyear: Number,
-    email: String
+    email: { type: String, index: { unique: true }}
 });
 
 const UserModel = mongoose.model('User',userSchema);
