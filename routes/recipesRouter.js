@@ -14,7 +14,7 @@ recipesRouter.get('/',(req,res) => {
   res.send(recipes);
 })
 
-usersRouter.post('/add',(req,res,next) => {
+recipesRouter.post('/add',(req,res,next) => {
   const result = Joi.validate(req.body, RecipeModel.Recipe);
   if(result.error){
       res.status(400).send(result.error.details[0].message);

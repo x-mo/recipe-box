@@ -6,11 +6,17 @@ mongoose.connect('mongodb://localhost/recipe-box')
 .catch(err => console.log(err));
 
 const User  = {
-  username: Joi.string().alphanum().min(3).max(30).required(),
+    username: Joi.string().alphanum().min(3).max(30).required(),
     password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/),
     birthyear: Joi.number().min(1850).max(2012),
     email: Joi.string().email({ minDomainSegments: 2 })
 }
+
+const LoginUser  = {
+  email: Joi.string().email({ minDomainSegments: 2 }),
+    password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/)
+}
+
 const userSchema = new mongoose.Schema({
   username: String,
     password: String,
@@ -20,6 +26,6 @@ const userSchema = new mongoose.Schema({
 
 const UserModel = mongoose.model('User',userSchema);
 
-
 module.exports.User = User;
+module.exports.LoginUser = LoginUser;
 module.exports.UserModel = UserModel;

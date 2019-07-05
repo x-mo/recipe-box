@@ -8,6 +8,27 @@ usersRouter.get('/',(req,res,next) => {
   res.send('Hello World');
 });
 
+usersRouter.get('/login',(req,res,next) => {
+  res.render('pages/login');
+});
+
+usersRouter.post('/login',(req,res,next) => {
+  const result = Joi.validate(req.body, UserModel.LoginUser);
+  if(result.error){
+      res.status(400).send(result.error.details[0].message);
+  }
+  else {
+    UserModel.UserModel.find({email: req.body.email}, (err, users) => {
+        if(req.body.password == users[0].password){
+          console.log("Welcome!");
+          res.redirect('/');
+        }else{
+          console.log("Wrong credintials");
+        }
+    })
+  }
+});
+
 usersRouter.get('/registration',(req,res,next) => {
   res.render('pages/registration');
 })

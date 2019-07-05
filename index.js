@@ -1,6 +1,7 @@
 const express = require('express');
 var usersRouter = require('./routes/usersRouter');
 var recipesRouter = require('./routes/recipesRouter');
+var mainRouter = require('./routes/mainRouter')
 var bodyParser = require('body-parser');
 
 const app = express();
@@ -10,6 +11,7 @@ app.use(express.json());
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
+app.use('/', mainRouter);
 app.use('/users', usersRouter);
 app.use('/recipes', recipesRouter);
 
