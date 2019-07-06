@@ -13,15 +13,15 @@ const User  = {
 }
 
 const LoginUser  = {
-  email: Joi.string().email({ minDomainSegments: 2 }),
+    email: Joi.string().email({ minDomainSegments: 2 }),
     password: Joi.string()
 }
 
 const userSchema = new mongoose.Schema({
     username: { type: String, index: { unique: true }},
+    email: { type: String, index: { unique: true }},
     password: String,
-    birthyear: Number,
-    email: { type: String, index: { unique: true }}
+    birthyear: Number
 });
 
 const UserModel = mongoose.model('User',userSchema);
