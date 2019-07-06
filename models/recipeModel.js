@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const mongoose  = require('mongoose');
 const IngrediantModel = require('./ingrediantModel');
-const ingrediantSchema = IngrediantModel.Ingrediant;
+const ingrediantSchema = IngrediantModel.IngrediantSchema;
 const Recipe  = {
     recipeName: Joi.string().alphanum().min(3).max(30).required(),
     recipeIngr: {},

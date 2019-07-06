@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Welcome to ingrediants</h1>
+    <div class="container">
+      <table style="border: 1px solid black">
+        <tr>
+            <td>Name</td>
+            <td>Weight</td>
+            <td>Price</td>
+        </tr>
+        <% ingrediants.forEach(ingrediant  => {  %>
+            <tr>
+                <td><%= ingrediant.name%></td>
+                <td><%= ingrediant.weight%></td>
+                <td><%= ingrediant.price%></td>
+            </tr>
+        <% }) %>
+    </table>
+  </div>
+  </body>
+</html>

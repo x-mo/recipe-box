@@ -5,7 +5,7 @@ const Joi = require('joi');
 const usersRouter = express.Router();
 
 usersRouter.get('/',(req,res,next) => {
-  res.send('Hello World');
+  res.send('Welcome, please sign in.');
 });
 
 usersRouter.get('/login',(req,res,next) => {
