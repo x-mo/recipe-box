@@ -20,9 +20,9 @@ export default {
 //     // }
 //   },
   created() {
-    axios.get('../ingrediants/')
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err));
+    axios.get('http://localhost:8080/ingrediants/')
+      .then(res => {console.log(res.data);})
+      .catch(() => { console.log("Fetching error occured.");} );
   }
 }
 </script>
