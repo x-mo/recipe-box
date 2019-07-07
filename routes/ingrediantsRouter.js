@@ -12,7 +12,7 @@ ingrediantsRouter.get('/',(req,res,next) => {
 
 ingrediantsRouter.get('/api',(req,res,next) => {
   IngrediantModel.IngrediantModel.find({}, (err, ingrediants) => {
-      res.send({ingrediants : ingrediants});
+      res.send(ingrediants);
   })
 });
 
