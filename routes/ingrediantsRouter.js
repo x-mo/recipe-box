@@ -10,6 +10,12 @@ ingrediantsRouter.get('/',(req,res,next) => {
   })
 });
 
+ingrediantsRouter.get('/api',(req,res,next) => {
+  IngrediantModel.IngrediantModel.find({}, (err, ingrediants) => {
+      res.send({ingrediants : ingrediants});
+  })
+});
+
 ingrediantsRouter.get('/add',(req,res,next) => {
   res.render("pages/ingrediants/add");
 });
