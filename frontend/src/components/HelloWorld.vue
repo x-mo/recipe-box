@@ -21,8 +21,8 @@ export default {
 //   },
   created() {
     axios.get('http://localhost:8080/ingrediants/')
-      .then(res => {console.log(res.data);})
-      .catch(() => { console.log("Fetching error occured.");} );
+      .then(res => {Console.log(res.data);})
+      .catch(() => { Console.error("Fetching error occured.");} );
   }
 }
 </script>
