@@ -30,6 +30,7 @@
     "joi-date-extensions": "^1.2.0",
     "jshint": "^2.10.2",
     "mongoose": "^5.6.3",
+    "passport": "^0.4.0",
     "salt": "^0.5.5"
   }
 }

@@ -9,6 +9,10 @@ recipesRouter.get('/',(req,res) => {
   })
 });
 
+recipesRouter.get('/add',(req,res) => {
+  res.render("pages/recipes/add")
+});
+
 recipesRouter.post('/add',(req,res,next) => {
   const result = Joi.validate(req.body, RecipeModel.Recipe);
   if(result.error){
