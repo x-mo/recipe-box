@@ -30,7 +30,6 @@
 
       <input type="submit" value="Submit" class="btn" />
 
-
       <div class="notification is-warning">
         <button class="delete"></button>
         <p class="alert" v-if="errors.has('name')">{{errors.first('name')}}</p>
@@ -103,5 +102,4 @@ export default {
 <style scoped>
 @import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
 @import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
-
 </style>

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import AddIngredient from './components/AddIngredient.vue';
-import Content2 from './components/Content2.vue';
+import Recipes from './components/Recipes.vue';
 
 Vue.use(Router)
 
@@ -14,9 +14,9 @@ export default new Router({
       component: AddIngredient
     },
     {
-      path: '/content2',
-      name:'content2',
-      component: Content2
+      path: '/recipes',
+      name:'recipes',
+      component: Recipes
     }
   ],
   mode:"history"
