@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-
+import VeeValidate from 'vee-validate';
 import router from './router'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -14,7 +14,7 @@ library.add(
   faFacebook,
   faYoutube
 )
-
+Vue.use(VeeValidate);
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.component('font-awesome-layers', FontAwesomeLayers)
 Vue.component('font-awesome-layers-text', FontAwesomeLayersText)

@@ -1,5 +1,6 @@
 <template>
-  <div class="footer">
+  <!-- <div class="my-footer is-widescreen"> -->
+    <div class="footer is-widescreen">
       <footer class="footer has-background-success">
         
         <div class="socialmedia">
