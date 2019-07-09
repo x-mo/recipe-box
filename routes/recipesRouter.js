@@ -13,6 +13,12 @@ recipesRouter.get('/add',(req,res) => {
   res.render("pages/recipes/add")
 });
 
+recipesRouter.get('/api',(req,res,next) => {
+  RecipeModel.RecipeModel.find({}, (err, recipes) => {
+      res.send(recipes);
+  })
+});
+
 recipesRouter.post('/add',(req,res,next) => {
   console.log(req.body);
   const result = Joi.validate(req.body, RecipeModel.Recipe);
