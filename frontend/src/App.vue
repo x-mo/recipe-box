@@ -32,9 +32,16 @@ export default {
 </script>
 
 <style>
+@import url("https://cdn.jsdelivr.net/npm/animate.css@3.5.1");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
+
+  /* .brand-name{
+      font-family: 'Brush Script MT', sans-serif;
+  } */
 </style>

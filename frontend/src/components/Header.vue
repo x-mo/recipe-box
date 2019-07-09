@@ -3,7 +3,8 @@
       <nav class="navbar is-success" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <a class="navbar-item" href="https://bulma.io">
-            <img src="https://bulma.io/images/bulma-logo-white.png" width="112" height="28" />
+            <img src="../assets/box.png"/>
+            <span class="is-size-4"><strong>&nbsp;RecipeBox</strong></span>
           </a>
 
           <a
