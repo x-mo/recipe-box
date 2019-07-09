@@ -3,7 +3,7 @@ const express = require('express');
 const usersRouter = require('./routes/usersRouter');
 const recipesRouter = require('./routes/recipesRouter');
 const mainRouter = require('./routes/mainRouter');
-const ingrediantsRouter = require('./routes/ingrediantsRouter');
+const ingredientsRouter = require('./routes/ingredientsRouter');
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -16,7 +16,7 @@ app.use(express.json());
 app.use('/', mainRouter);
 app.use('/users', usersRouter);
 app.use('/recipes', recipesRouter);
-app.use('/ingrediants', ingrediantsRouter);
+app.use('/ingredients', ingredientsRouter);
 
 const port = process.env.PORT || 3000;
 app.listen(port, (req, res) => {

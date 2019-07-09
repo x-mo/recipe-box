@@ -76,7 +76,7 @@ export default {
       console.log(newIngredient);
 
       axios
-        .post("http://localhost:8080/ingrediants/add/", newIngredient)
+        .post("http://localhost:8080/ingredients/add/", newIngredient)
         .then(() => {
           this.ingredientsArray.push(newIngredient);
           console.log(this.ingredientsArray);
@@ -89,7 +89,7 @@ export default {
   },
   created() {
     axios
-      .get("http://localhost:8080/ingrediants/api/")
+      .get("http://localhost:8080/ingredients/api/")
       .then(res => {
         console.log(res.data);
         this.ingredientsArray = res.data;

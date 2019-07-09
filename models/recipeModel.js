@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const mongoose  = require('mongoose');
-const IngrediantModel = require('./ingrediantModel');
-const ingrediantSchema = IngrediantModel.IngrediantSchema;
+const ingredientModel = require('./ingredientModel');
+const ingredientSchema = ingredientModel.ingredientSchema;
 
 const Recipe  = {
     recipeName: Joi.string().min(3).max(30).required(),
@@ -16,7 +16,7 @@ const Recipe  = {
 
 const recipeSchema = new mongoose.Schema({
     recipeName: String,
-    recipeIngr: [ingrediantSchema],
+    recipeIngr: [ingredientSchema],
     recipePrice: Number,
 });
 

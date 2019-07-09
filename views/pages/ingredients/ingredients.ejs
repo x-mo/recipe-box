@@ -6,7 +6,7 @@
     <title></title>
   </head>
   <body>
-    <h1>Welcome to ingrediants</h1>
+    <h1>Welcome to ingredients</h1>
     <div class="container">
       <table class="table table-boreded" style="border: 1px solid black">
         <tr>
@@ -14,11 +14,11 @@
             <td>Weight</td>
             <td>Price</td>
         </tr>
-        <% ingrediants.forEach(ingrediant  => {  %>
+        <% ingredients.forEach(ingredient  => {  %>
             <tr>
-                <td><%= ingrediant.name%></td>
-                <td><%= ingrediant.weight%></td>
-                <td><%= ingrediant.price%></td>
+                <td><%= ingredient.name%></td>
+                <td><%= ingredient.weight%></td>
+                <td><%= ingredient.price%></td>
             </tr>
         <% }) %>
     </table>
