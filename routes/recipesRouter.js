@@ -1,6 +1,6 @@
 const express = require('express');
 const RecipeModel = require('../models/recipeModel');
-
+const Joi = require('joi');
 const recipesRouter = express.Router();
 
 recipesRouter.get('/',(req,res) => {
@@ -14,6 +14,7 @@ recipesRouter.get('/add',(req,res) => {
 });
 
 recipesRouter.post('/add',(req,res,next) => {
+  console.log(req.body);
   const result = Joi.validate(req.body, RecipeModel.Recipe);
   if(result.error){
       res.status(400).send(result.error.details[0].message);

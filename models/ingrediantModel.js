@@ -3,15 +3,15 @@ const mongoose  = require('mongoose');
 
 
 const ingrediantSchema = new mongoose.Schema({
-    name: String,
-    weight: Number,
-    price: Number
+    ingName: String,
+    ingWeight: Number,
+    ingPrice: Number
 });
 
 const Ingrediant  = {
-    name: Joi.string().alphanum().min(3).max(30).required(),
-    weight: Joi.number().precision(2).required(),
-    price: Joi.number().required()
+    ingName: Joi.string().min(3).max(30).required(),
+    ingWeight: Joi.number().precision(2).required(),
+    ingPrice: Joi.number().required()
 }
 
 const IngrediantModel = mongoose.model('Ingrediant',ingrediantSchema);
