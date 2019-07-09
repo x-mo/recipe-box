@@ -1,12 +1,13 @@
 const express = require('express');
 const UserModel = require('../models/userModel');
 const Joi = require('joi');
+const auth = require('./auth');
 const bcrypt = require('bcrypt-nodejs');
 var salt = bcrypt.genSaltSync(10);
 
 const usersRouter = express.Router();
 
-usersRouter.get('/',(req,res,next) => {
+usersRouter.get('/',auth.optional,(req,res,next) => {
   res.render('pages/users/login');
 });
 
@@ -18,8 +19,9 @@ usersRouter.post('/login',(req,res,next) => {
   else {
     UserModel.UserModel.find({email: req.body.email}, (err, users) => {
         if(bcrypt.compareSync(req.body.password, users[0].password)) {
+          users[0].token = users[0].generateJWT();
             console.log("Welcome!");
-            res.redirect('/');
+            return res.json({ user: users[0].toAuthJSON() });
         } else {
           console.log("Wrong credintials");
         }
@@ -27,11 +29,11 @@ usersRouter.post('/login',(req,res,next) => {
   }
 });
 
-usersRouter.get('/registration',(req,res,next) => {
+usersRouter.get('/registration',auth.optional,(req,res,next) => {
   res.render('pages/users/registration');
 })
 
-usersRouter.post('/registration',(req,res,next) => {
+usersRouter.post('/registration',auth.optional,(req,res,next) => {
   const result = Joi.validate(req.body, UserModel.User);
   let hash = bcrypt.hashSync(req.body.password, salt);
   req.body.password = hash;
@@ -42,7 +44,8 @@ usersRouter.post('/registration',(req,res,next) => {
     const newUser = new UserModel.UserModel(req.body);
     newUser.save()
     .then(item => {
-      res.send("new user saved to database");
+      console.log("new user saved to database");
+      res.json({ user: newUser.toAuthJSON()});
     })
     .catch(err => {
       res.status(400).send(err.errmsg);
