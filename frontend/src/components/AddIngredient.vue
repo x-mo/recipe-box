@@ -4,7 +4,7 @@
     <form @submit.prevent="addIngredient">
       <input
         type="text"
-        v-model="name"
+        v-model="ingName"
         name="name"
         placeholder="Ingredient"
         v-validate="'required'"
@@ -13,7 +13,7 @@
       <input
         type="number"
         step="any"
-        v-model="weight"
+        v-model="ingWeight"
         name="weight"
         placeholder="Weight"
         v-validate="'required'"
@@ -22,7 +22,7 @@
       <input
         type="number"
         step="any"
-        v-model="price"
+        v-model="ingPrice"
         name="price"
         placeholder="Price"
         v-validate="'required'"
@@ -45,7 +45,7 @@
         leave-active-class="animated bounceOutDown"
       >
         <li v-for="(data, index) in ingredientsArray" :key="index">
-          {{ data.name }} {{ data.weight }} {{ data.price }}
+          {{ data.ingName }} {{ data.ingWeight }} {{ data.ingPrice }}
           <i
             class="fa fa-minus-circle"
             v-on:click="remove(index)"
@@ -69,9 +69,9 @@ export default {
   methods: {
     addIngredient() {
       const newIngredient = {
-        name: this.name,
-        weight: this.weight,
-        price: this.price
+        ingName: this.ingName,
+        ingWeight: this.ingWeight,
+        ingPrice: this.ingPrice
       };
       console.log(newIngredient);
 
