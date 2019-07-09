@@ -21,19 +21,19 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item">Home</a>
+            <a class="navbar-item" href="http://localhost:8080/">Home</a>
 
-            <a class="navbar-item">Recipes</a>
+            <a class="navbar-item" href="http://localhost:8080/recipes">Recipes</a>
 
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">More</a>
 
               <div class="navbar-dropdown">
-                <a class="navbar-item">About</a>
-                <a class="navbar-item">Jobs</a>
-                <a class="navbar-item">Contact</a>
-                <hr class="navbar-divider" />
-                <a class="navbar-item">Report an issue</a>
+                <a class="navbar-item" href="http://localhost:8080/addrecipe">Add Recipes</a>
+                <a class="navbar-item" href="http://localhost:8080/addingredient">Add Ingredients</a>
+                <!-- <a class="navbar-item">Contact</a> -->
+                <!-- <hr class="navbar-divider" /> -->
+                <!-- <a class="navbar-item">Report an issue</a> -->
               </div>
             </div>
           </div>

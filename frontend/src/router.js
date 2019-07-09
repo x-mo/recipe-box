@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+import AddRecipe from './components/AddRecipe.vue';
 import AddIngredient from './components/AddIngredient.vue';
 import Recipes from './components/Recipes.vue';
 
@@ -12,6 +13,11 @@ export default new Router({
       path: '/addingredient',
       name:'addingredient',
       component: AddIngredient
+    },
+    {
+      path: '/addrecipe',
+      name:'addrecipe',
+      component: AddRecipe
     },
     {
       path: '/recipes',
