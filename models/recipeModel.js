@@ -5,6 +5,7 @@ const ingredientSchema = ingredientModel.ingredientSchema;
 const ingredient = ingredientModel.ingredient;
 
 const Recipe  = {
+    recipeImage: Joi.string().required(),
     recipeName: Joi.string().min(3).max(30).required(),
     recipeIngr: Joi.array().items(ingredient),
     recipePrice: Joi.number()
@@ -12,6 +13,7 @@ const Recipe  = {
 
 
 const recipeSchema = new mongoose.Schema({
+    recipeImage: String,
     recipeName: String,
     recipeIngr: [ingredientSchema],
     recipePrice: Number,
