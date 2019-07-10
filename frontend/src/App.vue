@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Header/>
+    <Hero v-if="showHero"/>
     <router-view></router-view>
     <Footer/>
   </div>
@@ -8,21 +9,27 @@
 
 <script>
 import Header from './components/Header.vue'
+import Hero from './components/HeroImage.vue'
 import Footer from './components/Footer.vue'
 
 import axios from 'axios';
 
 export default {
   name: 'app',
+  computed: {
+      showHero() {
+        if(this.$route.path == "/" || this.$route.path == "/home" ) {
+          return true
+        } else {
+          return false
+        }
+      }
+    },
   components: {
     Header,
+    Hero,
     Footer
   },
-//   data() {
-//     // return {
-//     //   todos: []
-//     // }
-//   },
   created() {
     axios.get('http://localhost:8080/ingrediants/')
       .then(res => {console.log(res.data);})

@@ -1,6 +1,6 @@
 <template>
-  <div class="header">
-      <nav class="navbar is-success" role="navigation" aria-label="main navigation">
+  <div class="header ">
+      <nav class="navbar is-success is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <a class="navbar-item" href="https://bulma.io">
             <img src="../assets/box.png"/>
@@ -51,6 +51,7 @@
           </div>
         </div>
       </nav>
+      
     </div>
 </template>
 
@@ -65,5 +66,7 @@ export default {
 </script>
 
 <style scoped>
-
+/* .header{
+  margin-bottom:52px;
+} */
 </style>

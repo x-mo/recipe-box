@@ -166,52 +166,12 @@ export default {
     },
     addRecipe() {
       const newRecipe = {
-        // ingName: this.ingName,
-        // recipeIngr: this.recipeIngr,
-        // ingWeight: this.ingWeight,
-        // ingPrice: this.ingPrice
-
         recipeName: this.recipeName,
         recipeImage: "https://bulma.io/images/placeholders/1280x960.png",
-        // recipeIngr: [
-        //   {
-        //     ingName: this.ingName,
-        //     ingWeight: this.ingWeight,
-        //     ingPrice: this.ingPrice
-        //   }
-        //   // ,{
-        //   //   ingName:"ingNAME2",
-        //   //   ingWeight:1,
-        //   //   ingPrice:5
-        //   // },{
-        //   //   ingName:"ingNAME3",
-        //   //   ingWeight:1,
-        //   //   ingPrice:5
-        //   // }
-        // ]
-        recipeIngr: this.finds
-        ,
+        recipeIngr: this.finds,
         recipePrice: this.recipePrice
 
-        // recipeName: "RECIBEEE",
-        // recipeImage: "https://bulma.io/images/placeholders/1280x960.png",
-        // recipeIngr: [{
-        //   ingName:"ingNAME1",
-        //   ingWeight:1,
-        //   ingPrice:5
-        // },{
-        //   ingName:"ingNAME2",
-        //   ingWeight:1,
-        //   ingPrice:5
-        // },{
-        //   ingName:"ingNAME3",
-        //   ingWeight:1,
-        //   ingPrice:5
-        // }],
-        // recipePrice: 10
       };
-      //console.log(newIngredient);
-
       axios
         .post("http://localhost:8080/recipes/add/", newRecipe)
         .then(() => {
@@ -225,7 +185,6 @@ export default {
     }
   },
   created() {
-    //this.addRecipe();
     axios
       .get("http://localhost:8080/recipes/api/")
       .then(res => {
