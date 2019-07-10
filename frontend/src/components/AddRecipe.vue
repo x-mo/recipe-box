@@ -20,7 +20,7 @@
         v-validate="'required'"
       />
 
-      <div class="notification is-warning">
+      <div class="recipe-validation notification is-warning">
         <button class="delete"></button>
         <p class="alert" v-if="errors.has('rname')">
           The
@@ -57,17 +57,56 @@
         name="price"
         placeholder="Price"
         v-validate="'required'"
-      /> -->
-<div class="dynamic-view has-background-primary">
-      <h1>Ingredients</h1>
-      <div v-for="(find,index) in finds" :key="index">
-        <input v-model="find.ingName" />
-        <input v-model="find.ingWeight" />
-        <input v-model="find.ingPrice" />
+      />-->
+      <div class="dynamic-view has-background-primary">
+        <h1>Ingredients</h1>
+        <div v-for="(find,index) in finds" :key="index">
+          <input
+            v-model="find.ingName"
+            type="text"
+            name="iname"
+            placeholder="Ingredient"
+            v-validate="'required'"
+          />
+          <input
+            v-model="find.ingWeight"
+            type="number"
+            step="any"
+            name="iweight"
+            placeholder="Weight"
+            v-validate="'required'"
+          />
+          <input
+            v-model="find.ingPrice"
+            type="number"
+            step="any"
+            name="iprice"
+            placeholder="Price"
+            v-validate="'required'"
+          />
+          
+          
+        </div>
+        <button type="button" @click="addFind">+</button>
+
+        <div class="notification is-warning">
+        <button class="delete"></button>
+        <p class="alert" v-if="errors.has('iname')">
+          The
+          <strong>Ingredient Name</strong> field is Required.
+        </p>
+        <p class="alert" v-if="errors.has('iprice')">
+          The
+          <strong>Ingredient Price</strong> field is Required, and must be a number.
+        </p>
+        <p class="alert" v-if="errors.has('iweight')">
+          The
+          <strong>Ingredient Weight</strong> field is Required, and must be a number.
+        </p>
       </div>
-      <button type="button" @click="addFind">+</button>
-      <pre>{{ $data | json }}</pre>
-    </div>
+
+        <!-- <pre>{{ $data | json }}</pre> -->
+      </div>
       <input type="submit" value="Submit" class="btn" />
 
       <div class="notification is-warning">
@@ -86,7 +125,7 @@
         </p>
       </div>
     </form>
-    
+
     <ul>
       <transition-group
         name="list"
@@ -121,7 +160,9 @@ export default {
   },
   methods: {
     addFind: function() {
-      this.finds.push({ /*value: ""*/ });
+      this.finds.push({
+        /*value: ""*/
+      });
     },
     addRecipe() {
       const newRecipe = {
@@ -132,22 +173,24 @@ export default {
 
         recipeName: this.recipeName,
         recipeImage: "https://bulma.io/images/placeholders/1280x960.png",
-        recipeIngr: [
-          {
-            ingName: this.ingName,
-            ingWeight: this.ingWeight,
-            ingPrice: this.ingPrice
-          }
-          // ,{
-          //   ingName:"ingNAME2",
-          //   ingWeight:1,
-          //   ingPrice:5
-          // },{
-          //   ingName:"ingNAME3",
-          //   ingWeight:1,
-          //   ingPrice:5
-          // }
-        ],
+        // recipeIngr: [
+        //   {
+        //     ingName: this.ingName,
+        //     ingWeight: this.ingWeight,
+        //     ingPrice: this.ingPrice
+        //   }
+        //   // ,{
+        //   //   ingName:"ingNAME2",
+        //   //   ingWeight:1,
+        //   //   ingPrice:5
+        //   // },{
+        //   //   ingName:"ingNAME3",
+        //   //   ingWeight:1,
+        //   //   ingPrice:5
+        //   // }
+        // ]
+        recipeIngr: this.finds
+        ,
         recipePrice: this.recipePrice
 
         // recipeName: "RECIBEEE",
