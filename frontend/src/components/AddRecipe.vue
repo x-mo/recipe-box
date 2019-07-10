@@ -2,6 +2,7 @@
   <div class="addrecipe">
     <h1>Adding Recipe Component</h1>
     <form @submit.prevent="addRecipe">
+      <h1>Recipe</h1>
       <input
         type="text"
         v-model="recipeName"
@@ -9,7 +10,7 @@
         placeholder="Recipe Name"
         v-validate="'required'"
       />
-      
+
       <input
         type="number"
         step="any"
@@ -19,14 +20,20 @@
         v-validate="'required'"
       />
 
-<div class="notification is-warning">
+      <div class="notification is-warning">
         <button class="delete"></button>
-        <p class="alert" v-if="errors.has('rname')">The <strong>Recipe Name</strong> field is Required.</p>
-        <p class="alert" v-if="errors.has('rprice')">The <strong>Recipe Price</strong> field is Required, and must be a number.</p>
+        <p class="alert" v-if="errors.has('rname')">
+          The
+          <strong>Recipe Name</strong> field is Required.
+        </p>
+        <p class="alert" v-if="errors.has('rprice')">
+          The
+          <strong>Recipe Price</strong> field is Required, and must be a number.
+        </p>
       </div>
 
-      <br>
-      <input
+      <br />
+      <!-- <input
         type="text"
         v-model="ingName"
         name="iname"
@@ -47,21 +54,39 @@
         type="number"
         step="any"
         v-model="ingPrice"
-        name="iprice"
+        name="price"
         placeholder="Price"
         v-validate="'required'"
-      />
-
+      /> -->
+<div class="dynamic-view has-background-primary">
+      <h1>Ingredients</h1>
+      <div v-for="(find,index) in finds" :key="index">
+        <input v-model="find.ingName" />
+        <input v-model="find.ingWeight" />
+        <input v-model="find.ingPrice" />
+      </div>
+      <button type="button" @click="addFind">+</button>
+      <pre>{{ $data | json }}</pre>
+    </div>
       <input type="submit" value="Submit" class="btn" />
 
       <div class="notification is-warning">
         <button class="delete"></button>
-        <p class="alert" v-if="errors.has('iname')">The <strong>Ingredient Name</strong> field is Required.</p>
-        <p class="alert" v-if="errors.has('weight')">The <strong>Recipe Weight</strong> field is Required, and must be a number.</p>
-        <p class="alert" v-if="errors.has('iprice')">The <strong>Recipe Price</strong> field is Required, and must be a number.</p>
+        <p class="alert" v-if="errors.has('iname')">
+          The
+          <strong>Ingredient Name</strong> field is Required.
+        </p>
+        <p class="alert" v-if="errors.has('weight')">
+          The
+          <strong>Recipe Weight</strong> field is Required, and must be a number.
+        </p>
+        <p class="alert" v-if="errors.has('iprice')">
+          The
+          <strong>Recipe Price</strong> field is Required, and must be a number.
+        </p>
       </div>
     </form>
-
+    
     <ul>
       <transition-group
         name="list"
@@ -75,10 +100,8 @@
             v-on:click="remove(index)"
           ></i>
           <!-- <li v-for="(data,iindex) in data.recipeIngr" :key="iindex"> {{ data.ingName }}</li> -->
-        
         </li>
-<!-- <li v-for="(data,index) in ingredientsArray" :key="index"> {{ data.ingName }}</li> -->
-        
+        <!-- <li v-for="(data,index) in ingredientsArray" :key="index"> {{ data.ingName }}</li> -->
       </transition-group>
     </ul>
   </div>
@@ -91,37 +114,42 @@ export default {
   name: "AddRecipe",
   data() {
     return {
-      ingredientsArray:[{}],
+      finds: [],
+      ingredientsArray: [{}],
       recipesArray: []
     };
   },
   methods: {
+    addFind: function() {
+      this.finds.push({ /*value: ""*/ });
+    },
     addRecipe() {
       const newRecipe = {
         // ingName: this.ingName,
         // recipeIngr: this.recipeIngr,
         // ingWeight: this.ingWeight,
         // ingPrice: this.ingPrice
-        
+
         recipeName: this.recipeName,
         recipeImage: "https://bulma.io/images/placeholders/1280x960.png",
-        recipeIngr: [{
-          ingName: this.ingName,
-          ingWeight:this.ingWeight,
-          ingPrice:this.ingPrice
-        }
-        // ,{
-        //   ingName:"ingNAME2",
-        //   ingWeight:1,
-        //   ingPrice:5
-        // },{
-        //   ingName:"ingNAME3",
-        //   ingWeight:1,
-        //   ingPrice:5
-        // }
+        recipeIngr: [
+          {
+            ingName: this.ingName,
+            ingWeight: this.ingWeight,
+            ingPrice: this.ingPrice
+          }
+          // ,{
+          //   ingName:"ingNAME2",
+          //   ingWeight:1,
+          //   ingPrice:5
+          // },{
+          //   ingName:"ingNAME3",
+          //   ingWeight:1,
+          //   ingPrice:5
+          // }
         ],
         recipePrice: this.recipePrice
-        
+
         // recipeName: "RECIBEEE",
         // recipeImage: "https://bulma.io/images/placeholders/1280x960.png",
         // recipeIngr: [{
@@ -154,15 +182,15 @@ export default {
     }
   },
   created() {
-    this.addRecipe();
+    //this.addRecipe();
     axios
       .get("http://localhost:8080/recipes/api/")
       .then(res => {
         //console.log(res.data);
         this.recipesArray = res.data;
-        this.ingredientsArray = recipesArray.recipeIngr;
+        //this.ingredientsArray = this.recipesArray.recipeIngr;
         // console.log(this.ingredientsArray);
-        
+
         console.log(res.data.recipeIngr);
         console.log(this.ingredientsArray);
       })
@@ -172,5 +200,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
