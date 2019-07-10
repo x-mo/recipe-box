@@ -97,28 +97,47 @@ export default {
   },
   methods: {
     addRecipe() {
-      console.log("addRecipe(): Called.");
       const newRecipe = {
         // ingName: this.ingName,
         // recipeIngr: this.recipeIngr,
         // ingWeight: this.ingWeight,
         // ingPrice: this.ingPrice
-        recipeName: "RECIBEEE",
+        
+        recipeName: this.recipeName,
         recipeImage: "https://bulma.io/images/placeholders/1280x960.png",
         recipeIngr: [{
-          ingName:"ingNAME1",
-          ingWeight:1,
-          ingPrice:5
-        },{
-          ingName:"ingNAME2",
-          ingWeight:1,
-          ingPrice:5
-        },{
-          ingName:"ingNAME3",
-          ingWeight:1,
-          ingPrice:5
-        }],
-        recipePrice: 10
+          ingName: this.ingName,
+          ingWeight:this.ingWeight,
+          ingPrice:this.ingPrice
+        }
+        // ,{
+        //   ingName:"ingNAME2",
+        //   ingWeight:1,
+        //   ingPrice:5
+        // },{
+        //   ingName:"ingNAME3",
+        //   ingWeight:1,
+        //   ingPrice:5
+        // }
+        ],
+        recipePrice: this.recipePrice
+        
+        // recipeName: "RECIBEEE",
+        // recipeImage: "https://bulma.io/images/placeholders/1280x960.png",
+        // recipeIngr: [{
+        //   ingName:"ingNAME1",
+        //   ingWeight:1,
+        //   ingPrice:5
+        // },{
+        //   ingName:"ingNAME2",
+        //   ingWeight:1,
+        //   ingPrice:5
+        // },{
+        //   ingName:"ingNAME3",
+        //   ingWeight:1,
+        //   ingPrice:5
+        // }],
+        // recipePrice: 10
       };
       //console.log(newIngredient);
 
