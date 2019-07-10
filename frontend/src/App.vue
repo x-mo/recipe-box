@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Header/>
+    <MSelect/>
     <Hero v-if="showHero"/>
     <router-view></router-view>
     <Footer/>
@@ -11,6 +12,8 @@
 import Header from './components/Header.vue'
 import Hero from './components/HeroImage.vue'
 import Footer from './components/Footer.vue'
+
+import MSelect from './components/MultiSelectComp.vue'
 
 import axios from 'axios';
 
@@ -28,7 +31,8 @@ export default {
   components: {
     Header,
     Hero,
-    Footer
+    Footer,
+    MSelect
   },
   created() {
     axios.get('http://localhost:8080/ingrediants/')
