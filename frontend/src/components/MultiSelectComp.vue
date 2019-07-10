@@ -10,7 +10,7 @@
     ></multiselect>
     {{selected}}
     <br />
-    <button @click="logit">Log the fuck up</button>
+    <button type="button" @click="logit">Log the fuck up</button>
   </div>
 </template>
 

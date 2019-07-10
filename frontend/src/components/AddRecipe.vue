@@ -60,7 +60,8 @@
       />-->
       <div class="dynamic-view has-background-primary">
         <h1>Ingredients</h1>
-        <div v-for="(find,index) in finds" :key="index">
+        <MSelect/>
+        <!-- <div v-for="(find,index) in finds" :key="index">
           <input
             v-model="find.ingName"
             type="text"
@@ -86,10 +87,10 @@
           />
           
           
-        </div>
-        <button type="button" @click="addFind">+</button>
+        </div> -->
+        <!-- <button type="button" @click="addFind">+</button> -->
 
-        <div class="notification is-warning">
+        <!-- <div class="notification is-warning">
         <button class="delete"></button>
         <p class="alert" v-if="errors.has('iname')">
           The
@@ -103,9 +104,10 @@
           The
           <strong>Ingredient Weight</strong> field is Required, and must be a number.
         </p>
-      </div>
+      </div> -->
 
-        <!-- <pre>{{ $data | json }}</pre> -->
+
+
       </div>
       <input type="submit" value="Submit" class="btn" />
 
@@ -149,26 +151,32 @@
 <script>
 import axios from "axios";
 
+import MSelect from '../components/MultiSelectComp.vue'
+
 export default {
   name: "AddRecipe",
+  components: {
+    
+    MSelect
+  },
   data() {
     return {
-      finds: [],
-      ingredientsArray: [{}],
+      // finds: [],
+      // ingredientsArray: [{}],
       recipesArray: []
     };
   },
   methods: {
-    addFind: function() {
-      this.finds.push({
-        /*value: ""*/
-      });
-    },
+    // addFind: function() {
+    //   this.finds.push({
+    //     /*value: ""*/
+    //   });
+    // },
     addRecipe() {
       const newRecipe = {
         recipeName: this.recipeName,
         recipeImage: "https://bulma.io/images/placeholders/1280x960.png",
-        recipeIngr: this.finds,
+        recipeIngr: MSelect.options,
         recipePrice: this.recipePrice
 
       };
@@ -194,7 +202,6 @@ export default {
         // console.log(this.ingredientsArray);
 
         console.log(res.data.recipeIngr);
-        console.log(this.ingredientsArray);
       })
       .catch(err => console.log(err));
   }

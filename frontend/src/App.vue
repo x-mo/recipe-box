@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <Header/>
-    <MSelect/>
     <Hero v-if="showHero"/>
     <router-view></router-view>
     <Footer/>
