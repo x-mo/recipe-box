@@ -103,7 +103,8 @@ export default {
         // recipeIngr: this.recipeIngr,
         // ingWeight: this.ingWeight,
         // ingPrice: this.ingPrice
-        recipeName: "recNAME",
+        recipeName: "RECIBEEE",
+        recipeImage: "https://bulma.io/images/placeholders/1280x960.png",
         recipeIngr: [{
           ingName:"ingNAME1",
           ingWeight:1,
