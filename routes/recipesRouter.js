@@ -3,17 +3,6 @@ const RecipeModel = require('../models/recipeModel');
 const Joi = require('joi');
 const recipesRouter = express.Router();
 
-recipesRouter.get('/',(req,res) => {
-  RecipeModel.RecipeModel.find({}, (err, recipes) => {
-      res.send(recipes);
-  })
-});
-
-
-recipesRouter.get('/add',(req,res) => {
-  res.render("pages/recipes/add")
-});
-
 recipesRouter.get('/api',(req,res,next) => {
   RecipeModel.RecipeModel.find({}, (err, recipes) => {
       res.send(recipes);
@@ -23,12 +12,13 @@ recipesRouter.get('/api',(req,res,next) => {
 recipesRouter.get('/api/:name',(req,res) => {
   //res.send(req.params.id);
   //res.send(req.query);
-  const recipe = recipes.find(c => c.name === parseInt(req.params.name));
-  if(!recipe) res.status(404).send('The requested recipe is not found!');
-  res.send(recipe);
+  RecipeModel.RecipeModel.find({recipeName : req.params.name}, (err, recipe) => {
+    res.send(recipe);
+  });
 });
 
-recipesRouter.post('/add',(req,res,next) => {
+
+recipesRouter.post('/api/add',(req,res,next) => {
   console.log(req.body);
   const result = Joi.validate(req.body, RecipeModel.Recipe);
   if(result.error){
@@ -47,24 +37,22 @@ recipesRouter.post('/add',(req,res,next) => {
 });
 
 
+recipesRouter.delete('/api/delete/:name', (req, res, next) => {
+    RecipeModel.RecipeModel.deleteOne({recipeName : req.params.name },(err) => {
+      if(err)
+      res.send(err);
+      res.send("Deleted!");
+    });
 
-recipesRouter.post('/',(req,res) => {
-  var recipe = {
-    recipeName: req.body.name,
-    recipeIngr: req.body.ingr,
-    recipePrice: req.body.price
-  };
-
-  recipes.push(recipe);
-  res.send(recipe);
 });
 
-recipesRouter.delete('/:id', (req, res, next) => {
-    res.send('DELETE /:id')
-})
+recipesRouter.put('/api/update/:name', (req, res, next) => {
+  RecipeModel.RecipeModel.findOneAndUpdate({recipeName : req.params.name }, req.body, (err) =>{
+    if(err)
+    res.send(err);
+    res.send("Updated!");
+  });
 
-recipesRouter.put('/:id', (req, res, next) => {
-    res.send('PUT /:id')
 })
 
 module.exports = recipesRouter;
