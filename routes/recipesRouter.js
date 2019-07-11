@@ -10,8 +10,6 @@ recipesRouter.get('/api',(req,res,next) => {
 });
 
 recipesRouter.get('/api/:name',(req,res) => {
-  //res.send(req.params.id);
-  //res.send(req.query);
   RecipeModel.RecipeModel.find({recipeName : req.params.name}, (err, recipe) => {
     res.send(recipe);
   });
