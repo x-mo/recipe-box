@@ -2,7 +2,7 @@
   <div class="header ">
       <nav class="navbar is-success is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <a class="navbar-item" href="https://bulma.io">
+          <a class="navbar-item" href="http://localhost:8080/">
             <img src="../assets/box.png"/>
             <span class="is-size-4"><strong>&nbsp;RecipeBox</strong></span>
           </a>
@@ -22,7 +22,6 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item" href="http://localhost:8080/">Home</a>
 
             <a class="navbar-item" href="http://localhost:8080/recipes">Recipes</a>
 
