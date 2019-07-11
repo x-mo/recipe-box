@@ -85,8 +85,8 @@
             placeholder="Price"
             v-validate="'required'"
           />
-          
-          
+
+
         </div> -->
         <!-- <button type="button" @click="addFind">+</button> -->
 
@@ -156,7 +156,7 @@ import MSelect from '../components/MultiSelectComp.vue'
 export default {
   name: "AddRecipe",
   components: {
-    
+
     MSelect
   },
   data() {
@@ -178,8 +178,8 @@ export default {
         recipeImage: "https://bulma.io/images/placeholders/1280x960.png",
         recipeIngr: MSelect.options,
         recipePrice: this.recipePrice
-
       };
+              console.log(MSelect.options);
       axios
         .post("http://localhost:8080/recipes/add/", newRecipe)
         .then(() => {

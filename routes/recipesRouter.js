@@ -9,6 +9,7 @@ recipesRouter.get('/',(req,res) => {
   })
 });
 
+
 recipesRouter.get('/add',(req,res) => {
   res.render("pages/recipes/add")
 });
@@ -17,6 +18,14 @@ recipesRouter.get('/api',(req,res,next) => {
   RecipeModel.RecipeModel.find({}, (err, recipes) => {
       res.send(recipes);
   })
+});
+
+recipesRouter.get('/api/:name',(req,res) => {
+  //res.send(req.params.id);
+  //res.send(req.query);
+  const recipe = recipes.find(c => c.name === parseInt(req.params.name));
+  if(!recipe) res.status(404).send('The requested recipe is not found!');
+  res.send(recipe);
 });
 
 recipesRouter.post('/add',(req,res,next) => {
@@ -37,13 +46,6 @@ recipesRouter.post('/add',(req,res,next) => {
   }
 });
 
-recipesRouter.get('/:name',(req,res) => {
-  //res.send(req.params.id);
-  //res.send(req.query);
-  const recipe = recipes.find(c => c.name === parseInt(req.params.name));
-  if(!recipe) res.status(404).send('The requested recipe is not found!');
-  res.send(recipe);
-});
 
 
 recipesRouter.post('/',(req,res) => {

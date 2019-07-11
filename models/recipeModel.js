@@ -7,8 +7,8 @@ const ingredient = ingredientModel.ingredient;
 const Recipe  = {
     recipeImage: Joi.string().required(),
     recipeName: Joi.string().min(3).max(30).required(),
-    recipeIngr: Joi.array().items(ingredient),
-    recipePrice: Joi.number()
+    recipeIngr: Joi.array().items(ingredient).required().min(2),
+    recipePrice: Joi.number().required()
 }
 
 
