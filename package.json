@@ -4,7 +4,10 @@
   "description": "Recipe Box is a food box delivery service. If you're just learning how to cook, or haven't the time to go to markets to grab the ingredients you need for the meal you love to cook. We have it delivered to your doorstep, in a box, alongside with a recipe sheet with visuals to aid you with the cooking process.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon index.js",
+    "client": "npm run serve --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -23,6 +26,7 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "bower": "^1.8.8",
+    "concurrently": "^4.1.1",
     "cors": "^2.8.5",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
