@@ -12,8 +12,6 @@ import Header from './components/Header.vue'
 import Hero from './components/HeroImage.vue'
 import Footer from './components/Footer.vue'
 
-import MSelect from './components/MultiSelectComp.vue'
-
 import axios from 'axios';
 
 export default {
@@ -30,8 +28,7 @@ export default {
   components: {
     Header,
     Hero,
-    Footer,
-    MSelect
+    Footer
   },
   created() {
     axios.get('http://localhost:8080/ingrediants/')

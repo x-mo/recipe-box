@@ -1,14 +1,18 @@
 <template>
   <div>
     <multiselect
-      v-model="selected"
-      multiple="true"
+      v-model="value"
+      multiple=true
       :options="options"
       :hide-selected="true"
       :taggable="true"
+      :close-on-select="false"
+      :trackable="true"
+      :key="ingName"
+      track-by="ingName"
       :custom-label="ingrFormat"
     ></multiselect>
-    {{selected}}
+    {{value}}
     <br />
     <button type="button" @click="logit">Log the fuck up</button>
   </div>
@@ -21,25 +25,9 @@ export default {
   components: { Multiselect },
   data() {
     return {
-      selected: null,
-      value: { ingName: "Tomatoes", ingWeight: 1, ingPrice: 10 },
-      options: [
-        {
-          ingName: "Tomatoes",
-          ingWeight: 1,
-          ingPrice: 10
-        },
-        {
-          ingName: "Cheese",
-          ingWeight: 1,
-          ingPrice: 20
-        },
-        {
-          ingName: "Cucumber",
-          ingWeight: 1,
-          ingPrice: 30
-        }
-      ]
+      
+      value: [],
+      options: []
     };
   },
   created() {
@@ -53,7 +41,7 @@ export default {
   },
   methods: {
     logit: function() {
-      console.log(this.selected);
+      // console.log(this.value);
     },
     ingrFormat: function({ingName, ingWeight, ingPrice}) {
       return `${ingName} — ${ingWeight} — ${ingPrice}`;
