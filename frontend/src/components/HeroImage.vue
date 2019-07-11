@@ -5,8 +5,8 @@
       <div class="hero-body">
         <div class="container">
           <!-- <img src="../assets/box.png"/>  -->
-          <h1 class="title has-text-grey-darker is-size-1">RecipeBox</h1>
-          <h3 class="subtitle has-text-black-ter is-size-2">Cook the meals you love, with no hassles.</h3>
+          <h1 class="title is-size-1 some-shadow">RecipeBox</h1>
+          <h3 class="subtitle is-size-2 some-shadow">Cook the meals you love, with no hassles.</h3>
         </div>
       </div>
     </div>
@@ -33,5 +33,8 @@ export default {
 }
 .hero-background.is-transparent {
   opacity: 0.7;
+}
+.some-shadow{
+  text-shadow: 0 0 5px rgba(0,0,0,0.8);
 }
 </style>

@@ -14,7 +14,7 @@
     ></multiselect>
     {{value}}
     <br />
-    <button type="button" @click="logit">Log the fuck up</button>
+    <button type="button" @click="logit">Log it up</button>
   </div>
 </template>
 
