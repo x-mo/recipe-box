@@ -1,7 +1,15 @@
 <template>
   <div id="app">
     <Header />
-    <popup-login />
+    <button id="show-modal" @click="showModal = true">Show Modal</button>
+    <!-- use the modal component, pass in the prop -->
+    <PopupLogin v-if="showModal" @close="showModal = false">
+      <!--
+      you can use custom content here to overwrite
+      default content
+      -->
+      <h3 slot="header">custom header</h3>
+    </PopupLogin>
     <Hero v-if="showHero" />
     <router-view></router-view>
     <Footer />
@@ -32,6 +40,11 @@ export default {
     Hero,
     Footer,
     PopupLogin
+  },
+  data(){
+   return{
+   showModal: false
+   };
   },
   created() {
     axios
