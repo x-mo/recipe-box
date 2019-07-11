@@ -60,7 +60,7 @@
       />-->
       <div class="dynamic-view has-background-primary">
         <h1>Ingredients</h1>
-        <MSelect/>
+        <MSelect />
         <!-- <div v-for="(find,index) in finds" :key="index">
           <input
             v-model="find.ingName"
@@ -87,7 +87,7 @@
           />
 
 
-        </div> -->
+        </div>-->
         <!-- <button type="button" @click="addFind">+</button> -->
 
         <!-- <div class="notification is-warning">
@@ -104,10 +104,7 @@
           The
           <strong>Ingredient Weight</strong> field is Required, and must be a number.
         </p>
-      </div> -->
-
-
-
+        </div>-->
       </div>
       <input type="submit" value="Submit" class="btn" />
 
@@ -151,12 +148,12 @@
 <script>
 import axios from "axios";
 
-import MSelect from '../components/MultiSelectComp.vue'
+import MSelect from "../components/MultiSelectComp.vue";
+
 
 export default {
   name: "AddRecipe",
   components: {
-
     MSelect
   },
   data() {
@@ -176,15 +173,14 @@ export default {
       const newRecipe = {
         recipeName: this.recipeName,
         recipeImage: "https://bulma.io/images/placeholders/1280x960.png",
-        recipeIngr: MSelect.options,
-        recipePrice: this.recipePrice
+        recipePrice: this.recipePrice,
+        recipeIngr: this.$children[0].value
       };
-              console.log(MSelect.options);
+      // console.log(newRecipe);
       axios
-        .post("http://localhost:8080/recipes/add/", newRecipe)
+        .post("http://localhost:8080/recipes/api/add/", newRecipe)
         .then(() => {
           this.recipesArray.push(newRecipe);
-          console.log(this.recipesArray);
         })
         .catch(err => {
           alert("Fill Required Fields");
