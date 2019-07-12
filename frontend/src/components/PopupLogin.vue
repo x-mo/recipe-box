@@ -7,12 +7,12 @@
         <div class="modal-header">
           <div class="tabs is-toggle is-centered has-background-white">
             <ul class="top-pad">
-              <li id="login-tab" class="is-active" v-on:click="switchTab()">
+              <li id="login-tab" class="is-active" @click="switchTab('login')">
                 <a>
                   <span>Login</span>
                 </a>
               </li>
-              <li id="register-tab" class="" v-on:click="switchTab()">
+              <li id="register-tab" @click="switchTab('register')">
                 <a>
                   <span>Register</span>
                 </a>
@@ -20,62 +20,81 @@
             </ul>
           </div>
         </div>
-        <div class="modal-card-body is-hidden">
-          <div class="field">
-            <label class="label">Username</label>
-            <div class="control">
-              <input class="input" type="text" />
-            </div>
-          </div>
+
+        <div id="login-card" class="modal-card-body">
           <div class="field">
             <label class="label">Email</label>
             <div class="control">
-              <input class="input" type="text" />
+              <input
+                v-model="logUsername"
+                name="logUsername"
+                v-validate="'required'"
+                class="input"
+                type="email"
+              />
             </div>
           </div>
           <div class="field">
             <label class="label">Password</label>
             <div class="control">
-              <input class="input" type="text" />
+              <input
+                v-model="logPassword"
+                name="logPassword"
+                v-validate="'required'"
+                class="input"
+                type="password"
+              />
             </div>
           </div>
 
           <div class="field is-grouped">
             <div class="control">
-              <button class="button is-link">Register</button>
-            </div>
-            <div class="control">
-              <button class="button is-text">Cancel</button>
+              <button class="button is-link" @click="loginUser">Log in</button>
             </div>
           </div>
         </div>
 
-        <div class="modal-card-body">
+        <div id="register-card" class="modal-card-body is-hidden">
           <div class="field">
             <label class="label">Username</label>
             <div class="control">
-              <input class="input" type="text" />
+              <input
+                v-model="regUsername"
+                name="regUsername"
+                v-validate="'required'"
+                class="input"
+                type="text"
+              />
             </div>
           </div>
           <div class="field">
             <label class="label">Email</label>
             <div class="control">
-              <input class="input" type="text" />
+              <input
+                v-model="regEmail"
+                name="regEmail"
+                v-validate="'required'"
+                class="input"
+                type="email"
+              />
             </div>
           </div>
           <div class="field">
             <label class="label">Password</label>
             <div class="control">
-              <input class="input" type="text" />
+              <input
+                v-model="regPassword"
+                name="regPassword"
+                v-validate="'required'"
+                class="input"
+                type="password"
+              />
             </div>
           </div>
 
           <div class="field is-grouped">
             <div class="control">
-              <button class="button is-link">Register</button>
-            </div>
-            <div class="control">
-              <button class="button is-text">Cancel</button>
+              <button class="button is-link" @click="registerUser">Register</button>
             </div>
           </div>
         </div>
@@ -86,9 +105,39 @@
 <script>
 export default {
   methods: {
-    switchTab: function() {
-      document.getElementById("register-tab").classList.toggle("is-active");
-      document.getElementById("login-tab").classList.toggle("is-active");
+    switchTab: function(arg) {
+      const regElement = document.getElementById("register-tab");
+      const logElement = document.getElementById("login-tab");
+      const regCard = document.getElementById("register-card");
+      const logCard = document.getElementById("login-card");
+
+      switch (arg) {
+        case "login":
+          console.log("Login Case");
+          logElement.classList.add("is-active");
+          regElement.classList.remove("is-active");
+
+          regCard.classList.add("is-hidden");
+          logCard.classList.remove("is-hidden");
+
+          break;
+        case "register":
+          console.log("Register Case");
+          logElement.classList.remove("is-active");
+          regElement.classList.add("is-active");
+
+          regCard.classList.remove("is-hidden");
+          logCard.classList.add("is-hidden");
+
+          break;
+        default:
+      }
+    },
+    registerUser: function() {
+      console.log("registeruser");
+    },
+    loginUser: function() {
+      console.log("registeruser");
     }
   }
 };
