@@ -26,8 +26,8 @@
             <label class="label">Email</label>
             <div class="control">
               <input
-                v-model="logUsername"
-                name="logUsername"
+                v-model="logEmail"
+                name="logEmail"
                 v-validate="'required'"
                 class="input"
                 type="email"
@@ -103,7 +103,18 @@
   </div>
 </template>
 <script>
+import axios from "axios";
+
 export default {
+  data() {
+    return {
+      logEmail,
+      logPassword,
+      regUsername,
+      regEmail,
+      regPassword
+    };
+  },
   methods: {
     switchTab: function(arg) {
       const regElement = document.getElementById("register-tab");
@@ -135,9 +146,27 @@ export default {
     },
     registerUser: function() {
       console.log("registeruser");
+
     },
     loginUser: function() {
-      console.log("registeruser");
+      // const newIngredient = {
+      //   ingName: this.ingName,
+      //   ingWeight: this.ingWeight,
+      //   ingPrice: this.ingPrice
+      // };
+      // console.log(newIngredient);
+
+      axios
+        .post("http://localhost:8080/users/registration/", newIngredient)
+        .then(() => {
+          // add auth token
+          // console.log(this.ingredientsArray);
+        })
+        .catch(err => {
+          alert("Fill Required Fields");
+          console.log(err);
+        });
+      
     }
   }
 };
