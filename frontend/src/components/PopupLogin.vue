@@ -1,60 +1,106 @@
 <template>
   <!-- template for the modal component -->
-<div id="modal-template"><div class="modal is-active">
-  <div class="modal-background" @click="$emit('close')"></div>
-  <div class="modal-card">
-    <body class="modal-card-body">
-      <div class="field">
-  <label class="label">Name</label>
-  <div class="control">
-    <input class="input" type="text" placeholder="Text input">
-  </div>
-</div>
+  <div id="modal-template">
+    <div class="modal is-active">
+      <div class="modal-background" @click="$emit('close')"></div>
+      <div class="modal-card">
+        <div class="modal-header">
+          <div class="tabs is-toggle is-centered has-background-white">
+            <ul class="top-pad">
+              <li id="login-tab" class="is-active" v-on:click="switchTab()">
+                <a>
+                  <span>Login</span>
+                </a>
+              </li>
+              <li id="register-tab" class="" v-on:click="switchTab()">
+                <a>
+                  <span>Register</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="modal-card-body is-hidden">
+          <div class="field">
+            <label class="label">Username</label>
+            <div class="control">
+              <input class="input" type="text" />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <input class="input" type="text" />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <input class="input" type="text" />
+            </div>
+          </div>
 
-<div class="field">
-  <label class="label">Username</label>
-  <div class="control has-icons-left has-icons-right">
-    <input class="input is-success" type="text" placeholder="Text input" value="bulma">
-    
-  </div>
-  <p class="help is-success">This username is available</p>
-</div>
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-link">Register</button>
+            </div>
+            <div class="control">
+              <button class="button is-text">Cancel</button>
+            </div>
+          </div>
+        </div>
 
-<div class="field">
-  <label class="label">Email</label>
-  <div class="control has-icons-left has-icons-right">
-    <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
-    <span class="icon is-small is-left">
-      <i class="fas fa-envelope"></i>
-    </span>
-    <span class="icon is-small is-right">
-      <i class="fas fa-exclamation-triangle"></i>
-    </span>
-  </div>
-  <p class="help is-danger">This email is invalid</p>
-</div>
+        <div class="modal-card-body">
+          <div class="field">
+            <label class="label">Username</label>
+            <div class="control">
+              <input class="input" type="text" />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <input class="input" type="text" />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <input class="input" type="text" />
+            </div>
+          </div>
 
-<div class="field is-grouped">
-  <div class="control">
-    <button class="button is-link">Submit</button>
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-link">Register</button>
+            </div>
+            <div class="control">
+              <button class="button is-text">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="control">
-    <button class="button is-text">Cancel</button>
-  </div>
-</div>
-    </body>
-  </div>
-</div>
-</div>
-
 </template>
 <script>
 export default {
-  
-}
+  methods: {
+    switchTab: function() {
+      document.getElementById("register-tab").classList.toggle("is-active");
+      document.getElementById("login-tab").classList.toggle("is-active");
+    }
+  }
+};
 </script>
 
 <style scoped>
+/* .is-active{
+  background-color:#000;
+} */
+.top-pad {
+  margin-top: 8px;
+}
 .modal-mask {
   position: fixed;
   z-index: 9998;
@@ -62,9 +108,9 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, 0.5);
   display: table;
-  transition: opacity .3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .modal-wrapper {
@@ -78,8 +124,8 @@ export default {
   padding: 20px 30px;
   background-color: #fff;
   border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
-  transition: all .3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+  transition: all 0.3s ease;
   font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -118,6 +164,4 @@ export default {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
-
-
 </style>

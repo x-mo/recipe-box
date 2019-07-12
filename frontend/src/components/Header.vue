@@ -42,9 +42,8 @@
             <div class="navbar-item">
               <div class="buttons">
                 <a class="button is-info" @click="$parent.showModal= true">
-                  <strong>Sign up</strong>
+                  <strong>Have an account?</strong>
                 </a>
-                <a class="button is-primary" @click="$parent.showModal= true">Log in</a>
               </div>
             </div>
           </div>
