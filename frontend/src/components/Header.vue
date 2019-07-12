@@ -41,10 +41,10 @@
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="buttons">
-                <a class="button is-info">
+                <a class="button is-info" @click="$parent.showModal= true">
                   <strong>Sign up</strong>
                 </a>
-                <a class="button is-primary">Log in</a>
+                <a class="button is-primary" @click="$parent.showModal= true">Log in</a>
               </div>
             </div>
           </div>

@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div id="app"  @keyup.esc="showModal = false" tabindex="0">
     <Header />
-    <button id="show-modal" @click="showModal = true">Show Modal</button>
+    <!-- <button id="show-modal" @click="showModal = true">Show Modal</button> -->
     <!-- use the modal component, pass in the prop -->
     <PopupLogin v-if="showModal" @close="showModal = false">
       <!--
