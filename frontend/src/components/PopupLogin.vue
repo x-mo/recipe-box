@@ -108,11 +108,11 @@ import axios from "axios";
 export default {
   data() {
     return {
-      logEmail,
-      logPassword,
-      regUsername,
-      regEmail,
-      regPassword
+      logEmail: "",
+      logPassword: "",
+      regUsername: "",
+      regEmail: "",
+      regPassword: ""
     };
   },
   methods: {
@@ -146,28 +146,30 @@ export default {
     },
     registerUser: function() {
       console.log("registeruser");
-
-    },
-    loginUser: function() {
-      // const newIngredient = {
-      //   ingName: this.ingName,
-      //   ingWeight: this.ingWeight,
-      //   ingPrice: this.ingPrice
-      // };
-      // console.log(newIngredient);
+      const newUser = {
+        username: this.regUsername,
+        email: this.regEmail,
+        password: this.regPassword,
+        birthyear: "1993"
+      };
+      // console.log(newUser);
 
       axios
-        .post("http://localhost:8080/users/registration/", newIngredient)
-        .then(() => {
+        .post("http://localhost:8080/users/registration/", newUser)
+        .then(res => {
           // add auth token
-          // console.log(this.ingredientsArray);
+          console.log(res.data.user);
+          this.$cookies.set("userToken", res.data.user.token, Infinity, '/');
+          console.log(this.$cookies.get("userToken"));
+          // close window & hide header.login button
+          
         })
         .catch(err => {
           alert("Fill Required Fields");
           console.log(err);
         });
-      
-    }
+    },
+    loginUser: function() {}
   }
 };
 </script>

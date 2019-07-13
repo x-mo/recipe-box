@@ -6,6 +6,7 @@ import router from './router'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTwitter, faFacebook,faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText } from '@fortawesome/vue-fontawesome'
+import VueCookies from 'vue-cookies'
 
 require("./assets/main.scss")
 
@@ -15,6 +16,7 @@ library.add(
   faYoutube
 )
 Vue.use(VeeValidate);
+Vue.use(VueCookies)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.component('font-awesome-layers', FontAwesomeLayers)
 Vue.component('font-awesome-layers-text', FontAwesomeLayersText)
