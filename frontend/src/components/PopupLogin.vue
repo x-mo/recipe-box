@@ -150,12 +150,13 @@ export default {
         username: this.regUsername,
         email: this.regEmail,
         password: this.regPassword,
-        birthyear: "1993"
+        birthyear: "1993",
+        is_admin: false
       };
       // console.log(newUser);
 
       axios
-        .post("http://localhost:8080/users/registration/", newUser)
+        .post("http://localhost:8080/users/api/registration/", newUser)
         .then(res => {
           // add auth token
           console.log(res.data.user);
@@ -189,7 +190,7 @@ export default {
       console.log(newUser);
 
       axios
-        .post("http://localhost:8080/users/login/", newUser)
+        .post("http://localhost:8080/users/api/login/", newUser)
         .then(res => {
           // add auth token
           console.log(res.data.user);

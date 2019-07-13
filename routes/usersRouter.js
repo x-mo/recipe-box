@@ -7,11 +7,19 @@ var salt = bcrypt.genSaltSync(10);
 
 const usersRouter = express.Router();
 
-usersRouter.get('/',auth.optional,(req,res,next) => {
-  res.render('pages/users/login');
+usersRouter.get('/api',auth.optional,(req,res,next) => {
+  UserModel.UserModel.find({}, (err, users) => {
+      res.send(users);
+  })
 });
 
-usersRouter.post('/login',(req,res,next) => {
+usersRouter.get('/api/:name',(req,res) => {
+  UserModel.UserModel.find({username : req.params.name}, (err, user) => {
+    res.send(user);
+  });
+});
+
+usersRouter.post('/api/login',(req,res,next) => {
   const result = Joi.validate(req.body, UserModel.LoginUser);
   if(result.error){
       res.status(400).send(result.error.details[0].message);
@@ -29,11 +37,8 @@ usersRouter.post('/login',(req,res,next) => {
   }
 });
 
-usersRouter.get('/registration',auth.optional,(req,res,next) => {
-  res.render('pages/users/registration');
-})
 
-usersRouter.post('/registration',auth.optional,(req,res,next) => {
+usersRouter.post('/api/registration',auth.optional,(req,res,next) => {
   const result = Joi.validate(req.body, UserModel.User);
   let hash = bcrypt.hashSync(req.body.password, salt);
   req.body.password = hash;
