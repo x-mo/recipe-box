@@ -2,6 +2,7 @@ const express = require('express');
 const auth = require('./auth');
 const UserModel = require('../models/userModel');
 const RecipeModel = require('../models/recipeModel');
+const OrderModel = require('../models/orderModel');
 
 const mainRouter = express.Router();
 
@@ -18,7 +19,7 @@ mainRouter.get('/',auth.required,(req,res,next) => {
 });
 
 mainRouter.get('/api/totIng/:name',auth.required,(req,res,next) => {
-  RecipeModel.RecipeModel.find({"recipeIngr.ingName" : req.params.name},(err, noIng) =>{
+  OrderModel.OrderModel.find({"orderItems.recipeIngr.ingName" : req.params.name},(err, noIng) =>{
     if(err)
     res.send(err);
     res.send(noIng.length);
