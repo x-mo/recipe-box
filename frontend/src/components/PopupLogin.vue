@@ -104,6 +104,7 @@
 </template>
 <script>
 import axios from "axios";
+import {EventBus} from "../main.js";
 
 export default {
   data() {
@@ -159,10 +160,11 @@ export default {
         .then(res => {
           // add auth token
           console.log(res.data.user);
-          this.$cookies.set("userToken", res.data.user.token, Infinity, '/');
+          this.$cookies.set("userToken", res.data.user.token, Infinity, "/");
           console.log(this.$cookies.get("userToken"));
           // close window & hide header.login button
-          
+          this.$emit("close");
+          document.getElementById("accButt").classList.add("is-hidden");
         })
         .catch(err => {
           alert("Fill Required Fields");
@@ -170,6 +172,12 @@ export default {
         });
     },
     loginUser: function() {}
+  },
+  created() {
+    // console.log(this.$parent.$children);
+    // console.log(this.$root.$el.firstChild.userTokenExist);
+      EventBus.$emit("logged-in", "nothing yet")
+    //
   }
 };
 </script>

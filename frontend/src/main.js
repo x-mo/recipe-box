@@ -21,6 +21,8 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.component('font-awesome-layers', FontAwesomeLayers)
 Vue.component('font-awesome-layers-text', FontAwesomeLayersText)
 
+export const EventBus = new Vue();
+
 Vue.config.productionTip = false
 
 new Vue({
