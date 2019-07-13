@@ -104,7 +104,6 @@
 </template>
 <script>
 import axios from "axios";
-import {EventBus} from "../main.js";
 
 export default {
   data() {
@@ -174,10 +173,7 @@ export default {
     loginUser: function() {}
   },
   created() {
-    // console.log(this.$parent.$children);
-    // console.log(this.$root.$el.firstChild.userTokenExist);
-      EventBus.$emit("logged-in", "nothing yet")
-    //
+
   }
 };
 </script>

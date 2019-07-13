@@ -41,7 +41,7 @@
 
         <div class="navbar-end">
           <div class="navbar-item">
-            <div id="accButt" class="buttons" v-show="userTokenExist">
+            <div id="accButt" class="buttons" v-show="!userTokenExist">
               <a class="button is-info" @click="$parent.showModal= true">
                 <strong>Have an account?</strong>
               </a>
@@ -54,10 +54,16 @@
 </template>
 
 <script>
-import { EventBus } from "../main.js";
 
 export default {
   name: "Header",
+  // computed: {
+  //     userTokenExist() {
+  //       return {
+
+  //       }
+  //     }
+  // },
   data() {
     return {
       userTokenExist: Boolean
@@ -66,11 +72,12 @@ export default {
   methods: {},
   created() {
     // console.log("header created")
-
-    EventBus.$on("logged-in", res => {
-      console.log(res);
+    if (this.$cookies.get("userToken") == null) {
       this.userTokenExist = false;
-    });
+    } else {
+      this.userTokenExist = true;
+    }
+    
   }
 };
 </script>
