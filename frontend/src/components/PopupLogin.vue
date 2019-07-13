@@ -166,6 +166,14 @@ export default {
           // close window & hide header.login button
           this.$emit("close");
           document.getElementById("accButt").classList.add("is-hidden");
+
+          var textNode = document.createTextNode(this.$cookies.get("userEmail"));
+          var strongNode = document.createElement("strong");
+          document
+            .getElementById("usremail")
+            .appendChild(strongNode)
+            .appendChild(textNode);
+          document.getElementById("accButt").classList.add("is-hidden");
         })
         .catch(err => {
           alert("Fill Required Fields");
@@ -190,7 +198,12 @@ export default {
           console.log(this.$cookies.get("userToken"));
           // close window & hide header.login button
           this.$emit("close");
-
+          var textNode = document.createTextNode(this.$cookies.get("userEmail"));
+          var strongNode = document.createElement("strong");
+          document
+            .getElementById("usremail")
+            .appendChild(strongNode)
+            .appendChild(textNode);
           document.getElementById("accButt").classList.add("is-hidden");
         })
         .catch(err => {

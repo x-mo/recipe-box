@@ -41,7 +41,7 @@
 
         <div class="navbar-end">
           <div class="navbar-item">
-            <div><strong>{{userEmail}}</strong></div>
+            <div id="usremail"><strong>{{userEmail}}</strong></div>
             <div id="accButt" class="buttons" v-show="!userTokenExist">
               <a class="button is-info" @click="$parent.showModal= true">
                 <strong>Have an account?</strong>
@@ -82,7 +82,7 @@ export default {
     if (this.$cookies.get("userEmail") == null) {
       this.userEmail = "";
     } else {
-      this.userEmail = "EMAIL";
+      this.userEmail = this.$cookies.get("userEmail");
     }
   }
 };
