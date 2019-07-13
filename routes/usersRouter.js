@@ -58,4 +58,14 @@ usersRouter.post('/api/registration',auth.optional,(req,res,next) => {
   }
 });
 
+usersRouter.put('/api/makeAdmin/:email', (req, res, next) => {
+  UserModel.UserModel.find({email: req.params.email}, (err, users) => {
+    if(err)
+    res.send(err);
+    users[0].is_admin = true;
+    res.send(req.params.email+" is now an admin!");
+  });
+
+})
+
 module.exports = usersRouter;
