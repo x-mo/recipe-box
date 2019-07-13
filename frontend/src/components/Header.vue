@@ -41,6 +41,7 @@
 
         <div class="navbar-end">
           <div class="navbar-item">
+            <div><strong>{{userEmail}}</strong></div>
             <div id="accButt" class="buttons" v-show="!userTokenExist">
               <a class="button is-info" @click="$parent.showModal= true">
                 <strong>Have an account?</strong>
@@ -54,7 +55,6 @@
 </template>
 
 <script>
-
 export default {
   name: "Header",
   // computed: {
@@ -66,7 +66,8 @@ export default {
   // },
   data() {
     return {
-      userTokenExist: Boolean
+      userTokenExist: false,
+      userEmail: ""
     };
   },
   methods: {},
@@ -77,7 +78,12 @@ export default {
     } else {
       this.userTokenExist = true;
     }
-    
+
+    if (this.$cookies.get("userEmail") == null) {
+      this.userEmail = "";
+    } else {
+      this.userEmail = "EMAIL";
+    }
   }
 };
 </script>

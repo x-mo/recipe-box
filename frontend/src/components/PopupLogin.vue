@@ -160,6 +160,8 @@ export default {
           // add auth token
           console.log(res.data.user);
           this.$cookies.set("userToken", res.data.user.token, Infinity, "/");
+          this.$cookies.set("userEmail", res.data.user.email, Infinity, "/");
+          // this.Vue.forceUpdate();
           console.log(this.$cookies.get("userToken"));
           // close window & hide header.login button
           this.$emit("close");
@@ -170,11 +172,34 @@ export default {
           console.log(err);
         });
     },
-    loginUser: function() {}
-  },
-  created() {
+    loginUser: function() {
+      console.log("loginuser");
+      const newUser = {
+        email: this.logEmail,
+        password: this.logPassword
+      };
+      console.log(newUser);
 
-  }
+      axios
+        .post("http://localhost:8080/users/login/", newUser)
+        .then(res => {
+          // add auth token
+          console.log(res.data.user);
+          this.$cookies.set("userToken", res.data.user.token, Infinity, "/");
+          this.$cookies.set("userEmail", res.data.user.email, Infinity, "/");
+          console.log(this.$cookies.get("userToken"));
+          // close window & hide header.login button
+          this.$emit("close");
+
+          document.getElementById("accButt").classList.add("is-hidden");
+        })
+        .catch(err => {
+          alert("Fill Required Fields");
+          console.log(err);
+        });
+    }
+  },
+  created() {}
 };
 </script>
 
