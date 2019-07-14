@@ -36,7 +36,7 @@ ingredientsRouter.post('/api/add',(req,res,next) => {
     const newingredient = new ingredientModel.ingredientModel(req.body);
     newingredient.save()
     .then(item => {
-      res.send("ingredient saved to database");
+      res.status(200).send("ingredient saved to database");
     })
     .catch(err => {
       res.status(400).send(err.errmsg);
@@ -48,7 +48,7 @@ ingredientsRouter.delete('/api/delete/:name', (req, res, next) => {
     ingredientModel.ingredientModel.deleteOne({ingName : req.params.name },(err) => {
       if(err)
       res.send(err);
-      res.send("Deleted!");
+      res.status(200).send("Deleted!");
     });
 
 });
