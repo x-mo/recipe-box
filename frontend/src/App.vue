@@ -8,7 +8,7 @@
       you can use custom content here to overwrite
       default content
       -->
-      <h3 slot="header">custom header</h3>
+      <!-- <h3 slot="header">custom header</h3> -->
     </PopupLogin>
     <Hero v-if="showHero" />
     <router-view></router-view>
