@@ -12,8 +12,8 @@
     </PopupLogin>
     <Hero v-if="showHero" />
     <router-view></router-view>
-    <WhyUs/>
-    <HallOfFame/>
+    <WhyUs v-if="showHero" />
+    <HallOfFame v-if="showHero" />
     <Footer />
   </div>
 </template>
