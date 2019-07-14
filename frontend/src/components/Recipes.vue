@@ -1,8 +1,6 @@
 <template>
   <div class="recipes">
-
     <div class="columns is-multiline is-centered">
-
       <div class="card column is-one-fifth" v-for="(data, index) in recipesArray" :key="index">
         <div class="card-image">
           <figure class="image is-4by3">
@@ -18,10 +16,8 @@
           </div>
         </div>
       </div>
-
     </div>
     <!-- COLUMNS END -->
-
   </div>
 </template>
 
@@ -51,7 +47,7 @@ export default {
 .columns {
   margin: 5px;
 }
-.column{
-    margin: 20px;
+.column {
+  margin: 20px;
 }
 </style>

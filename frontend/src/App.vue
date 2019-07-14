@@ -12,6 +12,8 @@
     </PopupLogin>
     <Hero v-if="showHero" />
     <router-view></router-view>
+    <WhyUs/>
+    <HallOfFame/>
     <Footer />
   </div>
 </template>
@@ -21,6 +23,8 @@ import Header from "./components/Header.vue";
 import Hero from "./components/HeroImage.vue";
 import Footer from "./components/Footer.vue";
 import PopupLogin from "./components/PopupLogin.vue";
+import WhyUs from "./components/WhyUs.vue";
+import HallOfFame from "./components/HallOfFame.vue";
 
 import axios from "axios";
 
@@ -39,7 +43,9 @@ export default {
     Header,
     Hero,
     Footer,
-    PopupLogin
+    PopupLogin,
+    WhyUs,
+    HallOfFame
   },
   data(){
    return{
