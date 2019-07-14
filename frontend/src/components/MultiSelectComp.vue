@@ -12,9 +12,7 @@
       track-by="ingName"
       :custom-label="ingrFormat"
     ></multiselect>
-    {{value}}
-    <br />
-    <button type="button" @click="logit">Log it up</button>
+    
   </div>
 </template>
 

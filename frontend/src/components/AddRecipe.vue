@@ -1,9 +1,10 @@
 <template>
   <div class="addrecipe">
-    <h1>Adding Recipe Component</h1>
+    <h1 class="title">Recipes</h1>
     <form @submit.prevent="addRecipe">
-      <h1>Recipe</h1>
+      <h1 class="is-size-5">Add new recipe:</h1>
       <input
+      class="input"
         type="text"
         v-model="recipeName"
         name="rname"
@@ -12,6 +13,7 @@
       />
 
       <input
+      class="input"
         type="number"
         step="any"
         v-model="recipePrice"
@@ -20,7 +22,7 @@
         v-validate="'required'"
       />
 
-      <div class="recipe-validation notification is-warning">
+      <div class="recipe-validation notification is-warning is-hidden">
         <button type="button" class="delete"></button>
         <p class="alert" v-if="errors.has('rname')">
           The
@@ -33,16 +35,14 @@
       </div>
 
       <br />
-    
-    
-      <div class="dynamic-view has-background-primary">
-        <h1>Ingredients</h1>
-        <MSelect />
-       
-      </div>
-      <input type="submit" value="Submit" class="btn" />
 
-      <div class="notification is-warning">
+      <!-- <div class="dynamic-view has-background-primary"> -->
+        <h1 class="is-size-5">Ingredients:</h1>
+        <MSelect />
+      <!-- </div> -->
+      <input type="submit" value="Add" class="button input" />
+
+      <div class="notification is-warning is-hidden">
         <button type="button" class="delete"></button>
         <p class="alert" v-if="errors.has('iname')">
           The
@@ -58,25 +58,20 @@
         </p>
       </div>
     </form>
-
-    <ul>
-      <transition-group
-        name="list"
-        enter-active-class="animated bounceInUp"
-        leave-active-class="animated bounceOutDown"
-      >
-        <li v-for="(data, index) in recipesArray" :key="index">
-          {{ data.recipeName }} {{ data.recipePrice }}
-          <i
-            class="fa fa-minus-circle"
-            v-on:click="remove(index)"
-          ></i>
-      
-      
-        </li>
-      
-      </transition-group>
-    </ul>
+    <table class="table is-bordered is-stripedis-narrow is-hoverable is-fullwidth">
+      <thead>
+        <tr>
+          <th class="has-text-centered">Name</th>
+          <th class="has-text-centered">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(data, index) in recipesArray" :key="index">
+          <td class="has-text-centered">{{ data.recipeName }}</td>
+          <td class="has-text-centered">{{ data.recipePrice }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -85,7 +80,6 @@ import axios from "axios";
 
 import MSelect from "../components/MultiSelectComp.vue";
 
-
 export default {
   name: "AddRecipe",
   components: {
@@ -93,12 +87,10 @@ export default {
   },
   data() {
     return {
-      
       recipesArray: []
     };
   },
   methods: {
-  
     addRecipe() {
       const newRecipe = {
         recipeName: this.recipeName,
@@ -106,7 +98,7 @@ export default {
         recipePrice: this.recipePrice,
         recipeIngr: this.$children[0].value
       };
-      
+
       axios
         .post("http://localhost:8080/recipes/api/add/", newRecipe)
         .then(() => {
@@ -122,9 +114,7 @@ export default {
     axios
       .get("http://localhost:8080/recipes/api/")
       .then(res => {
-        
         this.recipesArray = res.data;
-        
 
         console.log(res.data.recipeIngr);
       })
