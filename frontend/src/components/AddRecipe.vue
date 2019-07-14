@@ -21,7 +21,7 @@
       />
 
       <div class="recipe-validation notification is-warning">
-        <button class="delete"></button>
+        <button type="button" class="delete"></button>
         <p class="alert" v-if="errors.has('rname')">
           The
           <strong>Recipe Name</strong> field is Required.
@@ -33,83 +33,17 @@
       </div>
 
       <br />
-      <!-- <input
-        type="text"
-        v-model="ingName"
-        name="iname"
-        placeholder="Ingredient"
-        v-validate="'required'"
-      />
-
-      <input
-        type="number"
-        step="any"
-        v-model="ingWeight"
-        name="weight"
-        placeholder="Weight"
-        v-validate="'required'"
-      />
-
-      <input
-        type="number"
-        step="any"
-        v-model="ingPrice"
-        name="price"
-        placeholder="Price"
-        v-validate="'required'"
-      />-->
+    
+    
       <div class="dynamic-view has-background-primary">
         <h1>Ingredients</h1>
         <MSelect />
-        <!-- <div v-for="(find,index) in finds" :key="index">
-          <input
-            v-model="find.ingName"
-            type="text"
-            name="iname"
-            placeholder="Ingredient"
-            v-validate="'required'"
-          />
-          <input
-            v-model="find.ingWeight"
-            type="number"
-            step="any"
-            name="iweight"
-            placeholder="Weight"
-            v-validate="'required'"
-          />
-          <input
-            v-model="find.ingPrice"
-            type="number"
-            step="any"
-            name="iprice"
-            placeholder="Price"
-            v-validate="'required'"
-          />
-
-
-        </div>-->
-        <!-- <button type="button" @click="addFind">+</button> -->
-
-        <!-- <div class="notification is-warning">
-        <button class="delete"></button>
-        <p class="alert" v-if="errors.has('iname')">
-          The
-          <strong>Ingredient Name</strong> field is Required.
-        </p>
-        <p class="alert" v-if="errors.has('iprice')">
-          The
-          <strong>Ingredient Price</strong> field is Required, and must be a number.
-        </p>
-        <p class="alert" v-if="errors.has('iweight')">
-          The
-          <strong>Ingredient Weight</strong> field is Required, and must be a number.
-        </p>
-        </div>-->
+       
       </div>
       <input type="submit" value="Submit" class="btn" />
 
       <div class="notification is-warning">
-        <button class="delete"></button>
+        <button type="button" class="delete"></button>
         <p class="alert" v-if="errors.has('iname')">
           The
           <strong>Ingredient Name</strong> field is Required.
@@ -137,9 +71,10 @@
             class="fa fa-minus-circle"
             v-on:click="remove(index)"
           ></i>
-          <!-- <li v-for="(data,iindex) in data.recipeIngr" :key="iindex"> {{ data.ingName }}</li> -->
+      
+      
         </li>
-        <!-- <li v-for="(data,index) in ingredientsArray" :key="index"> {{ data.ingName }}</li> -->
+      
       </transition-group>
     </ul>
   </div>
@@ -158,17 +93,12 @@ export default {
   },
   data() {
     return {
-      // finds: [],
-      // ingredientsArray: [{}],
+      
       recipesArray: []
     };
   },
   methods: {
-    // addFind: function() {
-    //   this.finds.push({
-    //     /*value: ""*/
-    //   });
-    // },
+  
     addRecipe() {
       const newRecipe = {
         recipeName: this.recipeName,
@@ -176,7 +106,7 @@ export default {
         recipePrice: this.recipePrice,
         recipeIngr: this.$children[0].value
       };
-      // console.log(newRecipe);
+      
       axios
         .post("http://localhost:8080/recipes/api/add/", newRecipe)
         .then(() => {
@@ -192,10 +122,9 @@ export default {
     axios
       .get("http://localhost:8080/recipes/api/")
       .then(res => {
-        //console.log(res.data);
+        
         this.recipesArray = res.data;
-        //this.ingredientsArray = this.recipesArray.recipeIngr;
-        // console.log(this.ingredientsArray);
+        
 
         console.log(res.data.recipeIngr);
       })

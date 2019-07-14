@@ -1,58 +1,74 @@
 <template>
   <div class="addingredient">
-    <h1>Adding Ingredient Component</h1>
-    <form @submit.prevent="addIngredient">
-      <input
-        type="text"
-        v-model="ingName"
-        name="name"
-        placeholder="Ingredient"
-        v-validate="'required'"
-      />
+    <h1 class="title">Ingredients</h1>
+    <form class="form is-horizontal" @submit.prevent="addIngredient">
+      <span class="is-size-5">Add new ingredient:</span>
+      <span style="color:red;margin-right:1.25em; display:inline-block;">&nbsp;</span>
+      <br />
+      <div class="field-body left-pad">
+        <input
+          class="field input"
+          type="text"
+          v-model="ingName"
+          name="name"
+          placeholder="Ingredient"
+          v-validate="'required'"
+        />
 
-      <input
-        type="number"
-        step="any"
-        v-model="ingWeight"
-        name="weight"
-        placeholder="Weight"
-        v-validate="'required'"
-      />
+        <input
+          class="field input"
+          type="number"
+          step="any"
+          v-model="ingWeight"
+          name="weight"
+          placeholder="Weight"
+          v-validate="'required'"
+        />
 
-      <input
-        type="number"
-        step="any"
-        v-model="ingPrice"
-        name="price"
-        placeholder="Price"
-        v-validate="'required'"
-      />
+        <input
+          class="field input"
+          type="number"
+          step="any"
+          v-model="ingPrice"
+          name="price"
+          placeholder="Price"
+          v-validate="'required'"
+        />
 
-      <input type="submit" value="Submit" class="btn" />
-
-      <div class="notification is-warning">
-        <button class="delete"></button>
+        <input type="submit" value="Add" class="field input button is-hidden" />
+      </div>
+      <div class="is-hidden notification is-warning">
+        <button type="button" class="delete"></button>
         <p class="alert" v-if="errors.has('name')">{{errors.first('name')}}</p>
         <p class="alert" v-if="errors.has('weight')">{{errors.first('weight')}}</p>
         <p class="alert" v-if="errors.has('price')">{{errors.first('price')}}</p>
       </div>
     </form>
 
-    <ul>
+    <!-- <ul>
       <transition-group
         name="list"
         enter-active-class="animated bounceInUp"
         leave-active-class="animated bounceOutDown"
-      >
-        <li v-for="(data, index) in ingredientsArray" :key="index">
-          {{ data.ingName }} {{ data.ingWeight }} {{ data.ingPrice }}
-          <i
-            class="fa fa-minus-circle"
-            v-on:click="remove(index)"
-          ></i>
-        </li>
-      </transition-group>
-    </ul>
+    >-->
+    <table class="table is-bordered is-stripedis-narrow is-hoverable is-fullwidth">
+      <thead>
+        <tr>
+          <th class="has-text-centered">Name</th>
+          <th class="has-text-centered">Weight</th>
+          <th class="has-text-centered">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(data, index) in ingredientsArray" :key="index">
+          <td class="has-text-centered">{{ data.ingName }}</td>
+          <td class="has-text-centered">{{ data.ingWeight }}</td>
+          <td class="has-text-centered">{{ data.ingPrice }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- </transition-group>
+    </ul>-->
   </div>
 </template>
 
@@ -100,5 +116,7 @@ export default {
 </script>
 
 <style scoped>
-
+.left-pad{
+  padding-left:14px
+}
 </style>
