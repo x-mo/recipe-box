@@ -1,6 +1,6 @@
 <template>
-  <!-- <div class="my-footer is-widescreen"> -->
-    <div class="footer is-widescreen">
+  <div class="my-footer-container is-widescreen">
+    <div class="my-footer is-widescreen">
       <footer class="footer has-background-success">
         
         <div class="socialmedia">
@@ -37,6 +37,7 @@
         <!-- COPYRIGHTS END -->
       </footer>
     </div>
+  </div>
 </template>
 
 <script>
@@ -46,5 +47,7 @@ export default {
 </script>
 
 <style scoped>
-
+.my-footer-container{
+  margin-top:100px;
+}
 </style>
