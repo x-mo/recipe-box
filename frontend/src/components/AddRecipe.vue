@@ -94,8 +94,7 @@ export default {
   },
   methods: {
     onFileSelected(event) {
-      
-      this.recipeImage = event.target.files[0].name;
+      this.recipeImage = "/static/img/" + event.target.files[0].name;
       // console.log(this.recipeImage);
     },
     addRecipe() {
