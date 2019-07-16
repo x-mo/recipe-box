@@ -41,10 +41,15 @@
 
         <div class="navbar-end">
           <div class="navbar-item">
-            <div id="usremail"><strong>{{userEmail}}</strong></div>
-            <div id="accButt" class="buttons" v-show="!userTokenExist">
-              <a class="button is-link" @click="$parent.showModal= true">
+            <div id="usremail" v-show="userTokenExist">
+              <strong>{{userEmail}}</strong>&nbsp;&nbsp;&nbsp;
+            </div>
+            <div id="accButt" class="buttons">
+              <a class="button is-link" v-show="!userTokenExist" @click="$parent.showModal= true">
                 <strong>Have an account?</strong>
+              </a>
+              <a class="button is-light" v-show="userTokenExist" @click="clearTokens">
+                <strong>Log out</strong>
               </a>
             </div>
           </div>
@@ -70,7 +75,14 @@ export default {
       userEmail: ""
     };
   },
-  methods: {},
+  methods: {
+    clearTokens: function() {
+      this.$cookies.remove("userToken", "/");
+      this.$cookies.remove("userEmail", "/");
+
+      window.location.reload();
+    }
+  },
   created() {
     // console.log("header created")
     if (this.$cookies.get("userToken") == null) {
