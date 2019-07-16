@@ -34,8 +34,11 @@ ingredientsRouter.post('/api/add',(req,res,next) => {
   }
   else {
     const newingredient = new ingredientModel.ingredientModel(req.body);
+    // newingredient._id = 1;
+    // newingredient.__v = 2;
     newingredient.save()
     .then(item => {
+      console.log("ingredient saved to database");
       res.status(200).send("ingredient saved to database");
     })
     .catch(err => {
