@@ -39,13 +39,26 @@ export default {
   methods: {
     popup: function(data, index) {
       this.showRecipeModal=true;
+      console.log("recipe data");
       console.log(data);
+      this.selectedRecipeName = data.recipeName;
+      this.selectedRecipePrice = data.recipePrice;
+      this.selectedIngredients = data.recipeIngr;
+      console.log("selectedRecipeNAME")
+      console.log(this.selectedRecipeName)
+      console.log("selectedRecipePRICE")
+      console.log(this.selectedRecipePrice)
+      console.log("selectedIngredients")
+      console.log(this.selectedIngredients)
     }
   },
   data() {
     return {
       recipesArray: [],
-      showRecipeModal: false
+      showRecipeModal: false,
+      selectedRecipeName: "",
+      selectedRecipePrice: "",
+      selectedIngredients: []
     };
   },
   components: {

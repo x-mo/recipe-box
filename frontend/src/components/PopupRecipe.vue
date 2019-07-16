@@ -3,18 +3,42 @@
   <div id="modal-template">
     <div class="modal is-active">
       <div class="modal-background" @click="$emit('close')"></div>
-      <div class="modal-card">
-        <div class="modal-header">
-        </div>
+      <div class="modal-card modal-container">
+        <div class="modal-header"></div>
 
-        <div id="login-card" class="modal-card-body">
+        <div id="recipe-card" class="modal-card-body">
           <!-- <p class="is-size-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae blanditiis iusto commodi ut eos doloribus aliquid minima rem, facilis voluptas non laboriosam magnam neque voluptatibus sequi dicta nostrum error eligendi?</p> -->
-          <img src="https://bulma.io/images/placeholders/1280x960.png" alt="">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus vero optio cum maiores. Repellat nesciunt cum dolore atque aperiam voluptas eius quia incidunt doloremque cupiditate asperiores, quisquam fuga repellendus omnis?</p>
+          <!-- <img src="https://bulma.io/images/placeholders/1280x960.png" alt />
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus vero optio cum maiores. Repellat nesciunt cum dolore atque aperiam voluptas eius quia incidunt doloremque cupiditate asperiores, quisquam fuga repellendus omnis?</p>-->
+          <!-- Main container -->
+          <nav class="level">
+            <!-- Left side -->
+            <div class="level-left">
+              <div class="level-item">
+                <img src="https://bulma.io/images/placeholders/1280x960.png" width="300px" />
+                <ul class="left-pad">
+                  <span class="title">{{recipeName}}&nbsp;</span>
+                  <span class="subtitle">{{recipePrice}}L.E</span>
+                  <!-- <p>
+                    <strong>Ingredients</strong>
+                  </p> -->
+                  <br><br/>
+                  <li v-for="(data, index) in ingredientsArray" :key="index">{{ data.ingName }}</li>
+                  <!-- <li>Lorem</li>
+                  <li>Lorem</li> -->
+                </ul>
+              </div>
+            </div>
+
+            <div class="level-right">
+              <div class="level-item">
+                <button class="button is-success">Order</button>
+              </div>
+            </div>
+          </nav>
         </div>
 
-        <div id="register-card" class="modal-card-body is-hidden">
-      </div>
+        <div id="register-card" class="modal-card-body is-hidden"></div>
       </div>
     </div>
   </div>
@@ -26,12 +50,25 @@ export default {
   name: "popuprecipe",
   data() {
     return {
-      
+      ingredientsArray: [],
+      recipeName: "",
+      recipePrice: ""
     };
   },
-  methods: {
-  },
-  created() {}
+  methods: {},
+  created() {
+    // this.ingredientsArray
+    console.log("this.$parent.selectedRecipe");
+    console.log(this.$parent.selectedRecipe);
+    
+    console.log("this.$parent.selectedIngredients");
+    console.log(this.$parent.selectedIngredients);
+    this.ingredientsArray = this.$parent.selectedIngredients;
+    this.recipeName = this.$parent.selectedRecipeName;
+    this.recipePrice = this.$parent.selectedRecipePrice;
+    
+    
+  }
 };
 </script>
 
@@ -41,6 +78,9 @@ export default {
 } */
 .top-pad {
   margin-top: 8px;
+}
+.left-pad{
+  margin-left: 8px;
 }
 .modal-mask {
   position: fixed;
@@ -60,14 +100,14 @@ export default {
 }
 
 .modal-container {
-  width: 300px;
+  width: 800px;
   margin: 0px auto;
-  padding: 20px 30px;
+  /* padding: 20px 30px; */
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-  transition: all 0.3s ease;
-  font-family: Helvetica, Arial, sans-serif;
+  /* transition: all 0.3s ease; */
+  /* font-family: Helvetica, Arial, sans-serif; */
 }
 
 .modal-header h3 {
