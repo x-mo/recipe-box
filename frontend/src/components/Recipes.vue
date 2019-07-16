@@ -13,7 +13,7 @@
       >
         <div class="card-image">
           <figure class="image is-4by3">
-            <img v-bind:src="`/static/img/${data.recipeImage}`" alt="Placeholder image" />
+            <img :src="`/static/img/${data.recipeImage}`" alt="Placeholder image" />
           </figure>
         </div>
         <div class="card-content">
