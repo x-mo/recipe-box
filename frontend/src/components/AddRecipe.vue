@@ -1,5 +1,5 @@
 <template>
-  <div class="addrecipe">
+  <div class="container addrecipe">
     <h1 class="title">Recipes</h1>
     <form @submit.prevent="addRecipe">
       <h1 class="is-size-5">Add new recipe:</h1>

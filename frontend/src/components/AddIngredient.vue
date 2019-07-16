@@ -1,5 +1,5 @@
 <template>
-  <div class="addingredient">
+  <div class="container addingredient">
     <h1 class="title">Ingredients</h1>
     <form class="form is-horizontal" @submit.prevent="addIngredient">
       <span class="is-size-5">Add new ingredient:</span>

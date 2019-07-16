@@ -43,7 +43,7 @@
           <div class="navbar-item">
             <div id="usremail"><strong>{{userEmail}}</strong></div>
             <div id="accButt" class="buttons" v-show="!userTokenExist">
-              <a class="button is-info" @click="$parent.showModal= true">
+              <a class="button is-primary" @click="$parent.showModal= true">
                 <strong>Have an account?</strong>
               </a>
             </div>

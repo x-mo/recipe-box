@@ -1,6 +1,6 @@
 <template>
   <div class="hero">
-    <div class="hero is-fullheight is-success has-background">
+    <div class="hero is-fullheight is-black has-background">
       <img alt="Fill Murray" class="hero-background is-transparent" src="../assets/heroimage.jpg" />
       <div class="hero-body">
         <div class="container">
@@ -32,7 +32,7 @@ export default {
   height: 100%;
 }
 .hero-background.is-transparent {
-  opacity: 0.7;
+  opacity: 0.7;  
 }
 .some-shadow{
   text-shadow: 0 0 5px rgba(0,0,0,0.8);
