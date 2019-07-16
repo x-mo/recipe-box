@@ -8,6 +8,8 @@ import { faTwitter, faFacebook,faYoutube } from '@fortawesome/free-brands-svg-ic
 import { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText } from '@fortawesome/vue-fontawesome'
 import VueCookies from 'vue-cookies'
 
+import UUID from 'vue-uuid';
+ 
 require("./assets/main.scss")
 
 library.add(
@@ -16,8 +18,8 @@ library.add(
   faYoutube
 )
 Vue.use(VeeValidate);
-Vue.use(VueCookies)
-
+Vue.use(VueCookies);
+Vue.use(UUID);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.component('font-awesome-layers', FontAwesomeLayers)

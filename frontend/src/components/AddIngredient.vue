@@ -74,6 +74,7 @@
 
 <script>
 import axios from "axios";
+import { uuid } from 'vue-uuid';
 
 export default {
   name: "AddIngredient",
@@ -87,12 +88,14 @@ export default {
       const newIngredient = {
         ingName: this.ingName,
         ingWeight: this.ingWeight,
-        ingPrice: this.ingPrice
+        ingPrice: this.ingPrice,
+        _id: new Date().getTime(),
+        __v: 0
       };
       console.log(newIngredient);
 
       axios
-        .post("http://localhost:8080/ingredients/add/", newIngredient)
+        .post("http://localhost:8080/ingredients/api/add/", newIngredient)
         .then(() => {
           this.ingredientsArray.push(newIngredient);
           console.log(this.ingredientsArray);
@@ -111,6 +114,8 @@ export default {
         this.ingredientsArray = res.data;
       })
       .catch(err => console.log(err));
+
+      // console.log(new Date().getTime());
   }
 };
 </script>
