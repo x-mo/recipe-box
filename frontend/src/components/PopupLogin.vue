@@ -3,7 +3,7 @@
   <div id="modal-template">
     <div class="modal is-active">
       <div class="modal-background" @click="$emit('close')"></div>
-      <div class="modal-card">
+      <div class="modal-card modal-container">
         <div class="modal-header">
           <div class="tabs is-toggle is-centered has-background-white">
             <ul class="top-pad">

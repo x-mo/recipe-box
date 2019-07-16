@@ -4,7 +4,7 @@
     <form @submit.prevent="addRecipe">
       <h1 class="is-size-5">Add new recipe:</h1>
       <input
-      class="input"
+        class="input"
         type="text"
         v-model="recipeName"
         name="rname"
@@ -13,7 +13,7 @@
       />
 
       <input
-      class="input"
+        class="input"
         type="number"
         step="any"
         v-model="recipePrice"
@@ -37,9 +37,10 @@
       <br />
 
       <!-- <div class="dynamic-view has-background-primary"> -->
-        <h1 class="is-size-5">Ingredients:</h1>
-        <MSelect />
+      <h1 class="is-size-5">Ingredients:</h1>
+      <MSelect />
       <!-- </div> -->
+      <input type="file" @change="onFileSelected" />
       <input type="submit" value="Add" class="button input" />
 
       <div class="notification is-warning is-hidden">
@@ -87,14 +88,20 @@ export default {
   },
   data() {
     return {
-      recipesArray: []
+      recipesArray: [],
+      recipeImage: "https://bulma.io/images/placeholders/1280x960.png"
     };
   },
   methods: {
+    onFileSelected(event) {
+      
+      this.recipeImage = "../assets/recipes/"+event.target.files[0].name;
+      // console.log(this.recipeImage);
+    },
     addRecipe() {
       const newRecipe = {
         recipeName: this.recipeName,
-        recipeImage: "https://bulma.io/images/placeholders/1280x960.png",
+        recipeImage: this.recipeImage,
         recipePrice: this.recipePrice,
         recipeIngr: this.$children[0].value
       };
