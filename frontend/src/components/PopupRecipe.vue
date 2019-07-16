@@ -15,7 +15,7 @@
             <!-- Left side -->
             <div class="level-left">
               <div class="level-item">
-                <img src="https://bulma.io/images/placeholders/1280x960.png" width="300px" />
+                <img :src="`${recipeImage}`"  width="300px" />
                 <ul class="left-pad">
                   <span class="title">{{recipeName}}&nbsp;</span>
                   <span class="subtitle">{{recipePrice}}L.E</span>
@@ -44,15 +44,14 @@
   </div>
 </template>
 <script>
-import axios from "axios";
-
 export default {
   name: "popuprecipe",
   data() {
     return {
       ingredientsArray: [],
       recipeName: "",
-      recipePrice: ""
+      recipePrice: "",
+      recipeImage: ""
     };
   },
   methods: {
@@ -70,6 +69,7 @@ export default {
     this.ingredientsArray = this.$parent.selectedIngredients;
     this.recipeName = this.$parent.selectedRecipeName;
     this.recipePrice = this.$parent.selectedRecipePrice;
+    this.recipeImage = this.$parent.selectedRecipeImage;
     
     
   }

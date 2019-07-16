@@ -13,13 +13,13 @@
       >
         <div class="card-image">
           <figure class="image is-4by3">
-            <img :src="`/static/img/${data.recipeImage}`" alt="Placeholder image" />
+            <img :src="`${data.recipeImage}`" alt="Placeholder image" />
           </figure>
         </div>
         <div class="card-content">
           <div class="media">
             <div class="media-content">
-              <p class="title is-4">{{ data.recipeImage }}</p>
+              <p class="title is-4">{{ data.recipeName }}</p>
               <p class="subtitle is-6">{{ data.recipePrice }}L.E</p>
             </div>
           </div>
@@ -43,6 +43,7 @@ export default {
       console.log(data);
       this.selectedRecipeName = data.recipeName;
       this.selectedRecipePrice = data.recipePrice;
+      this.selectedRecipeImage = data.recipeImage;
       this.selectedIngredients = data.recipeIngr;
       console.log("selectedRecipeNAME")
       console.log(this.selectedRecipeName)
@@ -58,6 +59,7 @@ export default {
       showRecipeModal: false,
       selectedRecipeName: "",
       selectedRecipePrice: "",
+      selectedRecipeImage: "",
       selectedIngredients: []
     };
   },
