@@ -119,4 +119,5 @@ export default {
 .left-pad{
   padding-left:14px
 }
+
 </style>
