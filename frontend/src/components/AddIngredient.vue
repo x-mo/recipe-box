@@ -74,7 +74,6 @@
 
 <script>
 import axios from "axios";
-import { uuid } from 'vue-uuid';
 
 export default {
   name: "AddIngredient",

@@ -6,7 +6,7 @@
 
     <div class="columns is-multiline is-centered">
       <div
-        @click="popup(data,index)"
+        @click="popup(data)"
         class="card column is-one-fifth"
         v-for="(data, index) in recipesArray"
         :key="index"
@@ -37,7 +37,7 @@ import PopupRecipe from "./PopupRecipe.vue";
 export default {
   name: "recipes",
   methods: {
-    popup: function(data, index) {
+    popup: function(data) {
       this.showRecipeModal=true;
       console.log("recipe data");
       console.log(data);

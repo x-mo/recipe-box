@@ -32,7 +32,7 @@
 
             <div class="level-right">
               <div class="level-item">
-                <button class="button is-success">Order</button>
+                <button class="button is-success" @click="alertOrder">Order</button>
               </div>
             </div>
           </nav>
@@ -55,7 +55,11 @@ export default {
       recipePrice: ""
     };
   },
-  methods: {},
+  methods: {
+    alertOrder: function(){
+      alert("Your order will arrive within 2 hours.");
+    }
+  },
   created() {
     // this.ingredientsArray
     console.log("this.$parent.selectedRecipe");
