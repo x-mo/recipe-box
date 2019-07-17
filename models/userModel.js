@@ -16,6 +16,7 @@ const User  = {
 
 const LoginUser  = {
     email: Joi.string().email({ minDomainSegments: 2 }),
+    username: Joi.string().alphanum().min(3).max(30).required(),
     password: Joi.string(),
     is_admin: Joi.boolean()
 }
@@ -36,6 +37,7 @@ userSchema.methods.generateJWT = function() {
   return jwt.sign({
     email: this.email,
     id: this._id,
+    username: this.username,
     exp: parseInt(expirationDate.getTime() / 1000, 10),
     is_admin: this.is_admin,
   }, 'secret');
@@ -44,6 +46,7 @@ userSchema.methods.generateJWT = function() {
 userSchema.methods.toAuthJSON = function() {
   return {
     _id: this._id,
+    username: this.username,
     email: this.email,
     token: this.generateJWT(),
     is_admin: this.is_admin,
