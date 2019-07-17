@@ -15,17 +15,18 @@
             <!-- Left side -->
             <div class="level-left">
               <div class="level-item">
-                <img :src="`${recipeImage}`"  width="300px" />
+                <img :src="`${recipeImage}`" width="300px" />
                 <ul class="left-pad">
                   <span class="title">{{recipeName}}&nbsp;</span>
                   <span class="subtitle">{{recipePrice}}L.E</span>
                   <!-- <p>
                     <strong>Ingredients</strong>
-                  </p> -->
-                  <br><br/>
+                  </p>-->
+                  <br />
+                  <br />
                   <li v-for="(data, index) in ingredientsArray" :key="index">{{ data.ingName }}</li>
                   <!-- <li>Lorem</li>
-                  <li>Lorem</li> -->
+                  <li>Lorem</li>-->
                 </ul>
               </div>
             </div>
@@ -44,6 +45,8 @@
   </div>
 </template>
 <script>
+import axios from "axios";
+
 export default {
   name: "popuprecipe",
   data() {
@@ -55,23 +58,44 @@ export default {
     };
   },
   methods: {
-    alertOrder: function(){
-      alert("Your order will arrive within 2 hours.");
+    alertOrder: function() {
+      const newOrder = {
+        orderNumber: Math.floor(Math.random() * 1000000),
+        orderStatus: "pending",
+        username: this.$cookies.get("userName"),
+        orderItems: [
+          {
+            recipeImage: this.$parent.selectedRecipeImage,
+            recipeName: this.$parent.selectedRecipeName,
+            recipeIngr: this.$parent.selectedIngredients,
+            recipePrice: this.$parent.selectedRecipePrice
+          }
+        ]
+      };
+
+      console.log(newOrder);
+      axios
+        .post("http://localhost:8080/orders/api/add/", newOrder)
+        .then(() => {
+          alert("Your order will arrive within 2 hours.");
+        })
+        .catch(err => {
+          alert("Fill Required Fields");
+          console.log(err);
+        });
     }
   },
   created() {
     // this.ingredientsArray
     console.log("this.$parent.selectedRecipe");
     console.log(this.$parent.selectedRecipe);
-    
+
     console.log("this.$parent.selectedIngredients");
     console.log(this.$parent.selectedIngredients);
     this.ingredientsArray = this.$parent.selectedIngredients;
     this.recipeName = this.$parent.selectedRecipeName;
     this.recipePrice = this.$parent.selectedRecipePrice;
     this.recipeImage = this.$parent.selectedRecipeImage;
-    
-    
   }
 };
 </script>
@@ -83,7 +107,7 @@ export default {
 .top-pad {
   margin-top: 8px;
 }
-.left-pad{
+.left-pad {
   margin-left: 8px;
 }
 .modal-mask {
