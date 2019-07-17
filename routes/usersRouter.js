@@ -29,9 +29,11 @@ usersRouter.post('/api/login',(req,res,next) => {
         if(bcrypt.compareSync(req.body.password, users[0].password)) {
           users[0].token = users[0].generateJWT();
             console.log("Welcome!");
+            console.log(users[0].toAuthJSON());
             return res.json({ user: users[0].toAuthJSON() });
         } else {
           console.log("Wrong credintials");
+          return res.send("Wrong credintials");
         }
     });
   }
@@ -50,6 +52,7 @@ usersRouter.post('/api/registration',auth.optional,(req,res,next) => {
     newUser.save()
     .then(item => {
       console.log("new user saved to database");
+      console.log(newUser.toAuthJSON());
       res.json({ user: newUser.toAuthJSON()});
     })
     .catch(err => {
@@ -59,11 +62,12 @@ usersRouter.post('/api/registration',auth.optional,(req,res,next) => {
 });
 
 usersRouter.put('/api/makeAdmin/:email', (req, res, next) => {
-  UserModel.UserModel.find({email: req.params.email}, (err, users) => {
+  UserModel.UserModel.findOneAndUpdate({email: req.params.email}, {$set:{is_admin: true}}, ( err, obj ) => {
     if(err)
-    res.send(err);
-    users[0].is_admin = true;
-    res.send(req.params.email+" is now an admin!");
+    res.statis(400).send(err);
+    else {
+      res.status(200).send("updated!, is now an admin");
+    }
   });
 
 })

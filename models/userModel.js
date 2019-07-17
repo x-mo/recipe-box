@@ -37,7 +37,7 @@ userSchema.methods.generateJWT = function() {
     email: this.email,
     id: this._id,
     exp: parseInt(expirationDate.getTime() / 1000, 10),
-    is_admin: this.is_admin
+    is_admin: this.is_admin,
   }, 'secret');
 }
 
@@ -46,7 +46,7 @@ userSchema.methods.toAuthJSON = function() {
     _id: this._id,
     email: this.email,
     token: this.generateJWT(),
-    is_admin: this.is_admin
+    is_admin: this.is_admin,
   };
 };
 
