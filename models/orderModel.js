@@ -8,13 +8,15 @@ const recipe = RecipeModel.Recipe;
 const Order  = {
     orderNumber: Joi.number().required(),
     username: Joi.string().alphanum().min(3).max(30).required(),
-    orderItems: Joi.array().items(recipe).required()
+    orderItems: Joi.array().items(recipe).required(),
+    orderStatus: Joi.string().alphanum().min(3).max(30).required()
 }
 
 const orderSchema = new mongoose.Schema({
     orderNumber: { type: Number, index: { unique: true }},
     username: String,
-    orderItems: [recipeSchema]
+    orderItems: [recipeSchema],
+    orderStatus: String
 });
 
 

@@ -21,6 +21,18 @@ orderRouter.get('/api/findOrder/:num',(req,res) => {
   });
 });
 
+orderRouter.get('/api/findOpenOrders',(req,res) => {
+  OrderModel.OrderModel.find({orderStatus : "Open"}, (err, orders) => {
+    res.send(orders);
+  });
+});
+
+orderRouter.get('/api/findClosedOrders',(req,res) => {
+  OrderModel.OrderModel.find({orderStatus : "Done"}, (err, orders) => {
+    res.send(orders);
+  });
+});
+
 orderRouter.post('/api/add',(req,res,next) => {
   console.log(req.body);
   const result = Joi.validate(req.body, OrderModel.Order);
@@ -31,7 +43,7 @@ orderRouter.post('/api/add',(req,res,next) => {
     const newOrder = new OrderModel.OrderModel(req.body);
     newOrder.save()
     .then(item => {
-      res.send("order saved to database");
+      res..status(200).send("order saved to database");
     })
     .catch(err => {
       res.status(400).send(err.errmsg);
