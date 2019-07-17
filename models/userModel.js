@@ -16,7 +16,6 @@ const User  = {
 
 const LoginUser  = {
     email: Joi.string().email({ minDomainSegments: 2 }),
-    username: Joi.string().alphanum().min(3).max(30).required(),
     password: Joi.string(),
     is_admin: Joi.boolean()
 }
