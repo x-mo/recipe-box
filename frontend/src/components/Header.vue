@@ -32,6 +32,7 @@
             <div class="navbar-dropdown">
               <a class="navbar-item" href="http://localhost:8080/addrecipe">Add Recipes</a>
               <a class="navbar-item" href="http://localhost:8080/addingredient">Add Ingredients</a>
+              <a class="navbar-item" href="http://localhost:8080/orders">Pending Orders</a>
               <!-- <a class="navbar-item">Contact</a> -->
               <!-- <hr class="navbar-divider" /> -->
               <!-- <a class="navbar-item">Report an issue</a> -->

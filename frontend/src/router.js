@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import AddRecipe from './components/AddRecipe.vue';
 import AddIngredient from './components/AddIngredient.vue';
 import Recipes from './components/Recipes.vue';
+import Orders from './components/Orders.vue';
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ export default new Router({
       path: '/recipes',
       name:'recipes',
       component: Recipes
+    },
+    {
+      path: '/orders',
+      name:'orders',
+      component: Orders
     }
   ],
   mode:"history"
