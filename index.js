@@ -4,6 +4,7 @@ const usersRouter = require('./routes/usersRouter');
 const recipesRouter = require('./routes/recipesRouter');
 const mainRouter = require('./routes/mainRouter');
 const ingredientsRouter = require('./routes/ingredientsRouter');
+const ordersRouter = require('./routes/ordersRouter');
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use('/', mainRouter);
 app.use('/users', usersRouter);
 app.use('/recipes', recipesRouter);
+app.use('/orders', ordersRouter);
 app.use('/ingredients', ingredientsRouter);
 
 const port = process.env.PORT || 3000;
