@@ -5,7 +5,7 @@ const recipesRouter = express.Router();
 
 recipesRouter.get('/api',(req,res,next) => {
   RecipeModel.RecipeModel.find({}, (err, recipes) => {
-      res.status(200).end(recipes);
+      res.status(200).send(recipes);
   })
 });
 
@@ -47,7 +47,7 @@ recipesRouter.delete('/api/delete/:name', (req, res, next) => {
 recipesRouter.put('/api/update/:name', (req, res, next) => {
   RecipeModel.RecipeModel.findOneAndUpdate({recipeName : req.params.name }, req.body, (err) =>{
     if(err)
-    res.status(400).end(err);
+    res.status(400).send(err);
     res.status(200).send("Updated!");
   });
 
