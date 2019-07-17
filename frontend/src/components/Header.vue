@@ -82,6 +82,7 @@ export default {
       this.$cookies.remove("userToken", "/");
       this.$cookies.remove("userEmail", "/");
       this.$cookies.remove("isAdmin", "/");
+      this.$cookies.remove("userName", "/");
 
       window.location.reload();
     }

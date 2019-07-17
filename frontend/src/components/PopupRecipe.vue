@@ -59,6 +59,12 @@ export default {
   },
   methods: {
     alertOrder: function() {
+
+      if(!this.$cookies.get("userName")){
+        alert("You need to be logged in to place orders.");
+        console.log("Login Yasta")
+      }else{
+
       const newOrder = {
         orderNumber: Math.floor(Math.random() * 1000000),
         orderStatus: "pending",
@@ -83,6 +89,7 @@ export default {
           alert("Fill Required Fields");
           console.log(err);
         });
+    }
     }
   },
   created() {
