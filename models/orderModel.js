@@ -12,8 +12,8 @@ const Order  = {
 }
 
 const orderSchema = new mongoose.Schema({
-    orderNumber: Number,
-    username: { type: String, index: { unique: true }},
+    orderNumber: { type: Number, index: { unique: true }},
+    username: String,
     orderItems: [recipeSchema]
 });
 
