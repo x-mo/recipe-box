@@ -40,8 +40,9 @@
       <h1 class="is-size-5">Ingredients:</h1>
       <MSelect />
       <!-- </div> -->
+      <h1 class="is-size-5">Select Recipe Image:</h1>
       <input type="file" @change="onFileSelected" />
-      <input type="submit" value="Add" class="button input" />
+      <input type="submit" value="Add" class="button is-primary input" />
 
       <div class="notification is-warning is-hidden">
         <button type="button" class="delete"></button>

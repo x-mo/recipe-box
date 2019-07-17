@@ -26,8 +26,8 @@
         <div class="navbar-start">
           <a class="navbar-item" href="http://localhost:8080/recipes">Recipes</a>
 
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">More</a>
+          <div class="navbar-item has-dropdown is-hoverable" v-show="isAdmin">
+            <a class="navbar-link">Admin Pages</a>
 
             <div class="navbar-dropdown">
               <a class="navbar-item" href="http://localhost:8080/addrecipe">Add Recipes</a>
@@ -72,13 +72,15 @@ export default {
   data() {
     return {
       userTokenExist: false,
-      userEmail: ""
+      userEmail: "",
+      isAdmin: false
     };
   },
   methods: {
     clearTokens: function() {
       this.$cookies.remove("userToken", "/");
       this.$cookies.remove("userEmail", "/");
+      this.$cookies.remove("isAdmin", "/");
 
       window.location.reload();
     }

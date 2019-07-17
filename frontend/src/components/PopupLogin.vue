@@ -151,7 +151,7 @@ export default {
         email: this.regEmail,
         password: this.regPassword,
         birthyear: "1993",
-        is_admin: false
+        is_admin: true
       };
       // console.log(newUser);
 
@@ -162,12 +162,14 @@ export default {
           console.log(res.data.user);
           this.$cookies.set("userToken", res.data.user.token, Infinity, "/");
           this.$cookies.set("userEmail", res.data.user.email, Infinity, "/");
+          this.$cookies.set("isAdmin", res.data.user.is_admin, Infinity, "/");
           // this.Vue.forceUpdate();
-          console.log(this.$cookies.get("userToken"));
+          // console.log(this.$cookies.get("isAdmin"));
           // close window & hide header.login button
           this.$emit("close");
           this.$parent.$children[0].userTokenExist = true;
           this.$parent.$children[0].userEmail = this.$cookies.get("userEmail");
+          this.$parent.$children[0].isAdmin = this.$cookies.get("isAdmin");
           // document.getElementById("accButt").classList.add("is-hidden");
 
           // var textNode = document.createTextNode(
@@ -200,6 +202,7 @@ export default {
           console.log(res.data.user);
           this.$cookies.set("userToken", res.data.user.token, Infinity, "/");
           this.$cookies.set("userEmail", res.data.user.email, Infinity, "/");
+          this.$cookies.set("isAdmin", res.data.user.is_admin, Infinity, "/");
           console.log(this.$cookies.get("userToken"));
           // close window & hide header.login button
 
@@ -214,6 +217,7 @@ export default {
           // document.getElementById("accButt").classList.add("is-hidden");
           this.$parent.$children[0].userTokenExist = true;
           this.$parent.$children[0].userEmail = this.$cookies.get("userEmail");
+          this.$parent.$children[0].isAdmin = this.$cookies.get("isAdmin");
 
           
           // document.getElementById("logoutButt").setAttribute("v-show",true);
