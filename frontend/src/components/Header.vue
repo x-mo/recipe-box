@@ -100,8 +100,14 @@ export default {
     } else {
       this.userEmail = this.$cookies.get("userEmail");
     }
-
-    this.isAdmin = this.$cookies.get("isAdmin");
+    // if (!this.$cookies.get("isAdmin")) {
+    //   this.isAdmin = false;
+    // } else {
+    //   this.isAdmin = this.$cookies.get("isAdmin");
+    //   console.log("Header isAd");
+    //   console.log(this.isAdmin);
+    // }
+    this.isAdmin = (this.$cookies.get("isAdmin")=="true");
   }
 };
 </script>

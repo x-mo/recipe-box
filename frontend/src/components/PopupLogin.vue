@@ -91,6 +91,12 @@
               />
             </div>
           </div>
+          <div class="field">
+            <label class="checkbox">
+              <input type="checkbox" v-model="isUserAdmin" :checked="isUserAdmin" />
+              Admin account
+            </label>
+          </div>
 
           <div class="field is-grouped">
             <div class="control">
@@ -112,7 +118,8 @@ export default {
       logPassword: "",
       regUsername: "",
       regEmail: "",
-      regPassword: ""
+      regPassword: "",
+      isUserAdmin: false
     };
   },
   methods: {
@@ -146,12 +153,13 @@ export default {
     },
     registerUser: function() {
       console.log("registeruser");
+      console.log(this.isUSerAdmin);
       const newUser = {
         username: this.regUsername,
         email: this.regEmail,
         password: this.regPassword,
         birthyear: "1993",
-        is_admin: true
+        is_admin: this.isUserAdmin
       };
       // console.log(newUser);
 
@@ -163,6 +171,8 @@ export default {
           this.$cookies.set("userToken", res.data.user.token, Infinity, "/");
           this.$cookies.set("userEmail", res.data.user.email, Infinity, "/");
           this.$cookies.set("isAdmin", res.data.user.is_admin, Infinity, "/");
+          console.log("REG res.data.user.is_admin")
+          console.log(res.data.user.is_admin)
           this.$cookies.set("userName", res.data.user.username, Infinity, "/");
           // this.Vue.forceUpdate();
           // console.log(this.$cookies.get("isAdmin"));
@@ -170,18 +180,7 @@ export default {
           this.$emit("close");
           this.$parent.$children[0].userTokenExist = true;
           this.$parent.$children[0].userEmail = this.$cookies.get("userEmail");
-          this.$parent.$children[0].isAdmin = this.$cookies.get("isAdmin");
-          // document.getElementById("accButt").classList.add("is-hidden");
-
-          // var textNode = document.createTextNode(
-          //   this.$cookies.get("userEmail")
-          // );
-          // var strongNode = document.createElement("strong");
-          // document
-          //   .getElementById("usremail")
-          //   .appendChild(strongNode)
-          //   .appendChild(textNode);
-          // document.getElementById("accButt").classList.add("is-hidden");
+          this.$parent.$children[0].isAdmin = (this.$cookies.get("isAdmin")=="true");
         })
         .catch(err => {
           alert("Fill Required Fields");
@@ -203,25 +202,21 @@ export default {
           console.log(res.data.user);
           this.$cookies.set("userToken", res.data.user.token, Infinity, "/");
           this.$cookies.set("userEmail", res.data.user.email, Infinity, "/");
-          this.$cookies.set("isAdmin", res.data.user.is_admin, Infinity, "/");
           this.$cookies.set("userName", res.data.user.username, Infinity, "/");
+          this.$cookies.set("isAdmin", res.data.user.is_admin, Infinity, "/");
+          
+          // this.$cookies.set("isAdmin", false, Infinity, "/");
+          console.log("LOG res.data.user.is_admin")
+          console.log(res.data.user.is_admin)
+          
           console.log(this.$cookies.get("userToken"));
-          // close window & hide header.login button
 
-          // var textNode = document.createTextNode(
-          //   this.$cookies.get("userEmail")
-          // );
-          // var strongNode = document.createElement("strong");
-          // document
-          //   .getElementById("usremail")
-          //   .appendChild(strongNode)
-          //   .appendChild(textNode);
-          // document.getElementById("accButt").classList.add("is-hidden");
           this.$parent.$children[0].userTokenExist = true;
           this.$parent.$children[0].userEmail = this.$cookies.get("userEmail");
-          this.$parent.$children[0].isAdmin = this.$cookies.get("isAdmin");
+          console.log("LOGIN this.$cookies.get(isAdmin)")
+          console.log(this.$cookies.get("isAdmin"))
+          this.$parent.$children[0].isAdmin = (this.$cookies.get("isAdmin")=="true");
 
-          
           // document.getElementById("logoutButt").setAttribute("v-show",true);
 
           this.$emit("close");
