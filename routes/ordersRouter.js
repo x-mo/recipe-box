@@ -43,7 +43,7 @@ orderRouter.post('/api/add',(req,res,next) => {
     const newOrder = new OrderModel.OrderModel(req.body);
     newOrder.save()
     .then(item => {
-      res..status(200).send("order saved to database");
+      res.status(200).send("order saved to database");
     })
     .catch(err => {
       res.status(400).send(err.errmsg);

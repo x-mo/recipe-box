@@ -163,6 +163,7 @@ export default {
           this.$cookies.set("userToken", res.data.user.token, Infinity, "/");
           this.$cookies.set("userEmail", res.data.user.email, Infinity, "/");
           this.$cookies.set("isAdmin", res.data.user.is_admin, Infinity, "/");
+          this.$cookies.set("userName", res.data.user.username, Infinity, "/");
           // this.Vue.forceUpdate();
           // console.log(this.$cookies.get("isAdmin"));
           // close window & hide header.login button
@@ -203,6 +204,7 @@ export default {
           this.$cookies.set("userToken", res.data.user.token, Infinity, "/");
           this.$cookies.set("userEmail", res.data.user.email, Infinity, "/");
           this.$cookies.set("isAdmin", res.data.user.is_admin, Infinity, "/");
+          this.$cookies.set("userName", res.data.user.username, Infinity, "/");
           console.log(this.$cookies.get("userToken"));
           // close window & hide header.login button
 
