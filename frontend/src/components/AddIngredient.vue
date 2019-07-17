@@ -1,11 +1,11 @@
 <template>
   <div class="container addingredient">
     <h1 class="title">Ingredients</h1>
-    <form class="form is-horizontal" @submit.prevent="addIngredient">
+    <form class="form" @submit.prevent="addIngredient">
       <span class="is-size-5">Add new ingredient:</span>
       <span style="color:red;margin-right:1.25em; display:inline-block;">&nbsp;</span>
       <br />
-      <div class="field-body left-pad">
+      <div class="field-body is-horizontal">
         <input
           class="field input"
           type="text"
@@ -35,14 +35,16 @@
           v-validate="'required'"
         />
 
-        <input type="submit" value="Add" class="field input button is-hidden" />
       </div>
-      <div class="is-hidden notification is-warning">
+      <!-- <br> -->
+              <input type="submit" value="Add" class="field input button is-primary" />
+
+      <!-- <div class="is-hidden notification is-warning">
         <button type="button" class="delete"></button>
         <p class="alert" v-if="errors.has('name')">{{errors.first('name')}}</p>
         <p class="alert" v-if="errors.has('weight')">{{errors.first('weight')}}</p>
         <p class="alert" v-if="errors.has('price')">{{errors.first('price')}}</p>
-      </div>
+      </div> -->
     </form>
 
     <!-- <ul>
