@@ -14,15 +14,15 @@ mainRouter.get('/',auth.required,(req,res,next) => {
       if(!user) {
         return res.sendStatus(400);
       }
-      return res.json({ user: user.toAuthJSON() });
+      return res.status(200).json({ user: user.toAuthJSON() });
     });
 });
 
 mainRouter.get('/api/totIng/:name',auth.required,(req,res,next) => {
   OrderModel.OrderModel.find({"orderItems.recipeIngr.ingName" : req.params.name},(err, noIng) =>{
     if(err)
-    res.send(err);
-    res.send(noIng.length);
+    res.status(200).send(err);
+    res.status(200).send(noIng.length);
   });
 });
 

@@ -9,13 +9,13 @@ const usersRouter = express.Router();
 
 usersRouter.get('/api',auth.optional,(req,res,next) => {
   UserModel.UserModel.find({}, (err, users) => {
-      res.send(users);
+      res.status(200).send(users);
   })
 });
 
 usersRouter.get('/api/:name',(req,res) => {
   UserModel.UserModel.find({username : req.params.name}, (err, user) => {
-    res.send(user);
+    res.status(200).send(user);
   });
 });
 
@@ -30,10 +30,10 @@ usersRouter.post('/api/login',(req,res,next) => {
           users[0].token = users[0].generateJWT();
             console.log("Welcome!");
             console.log(users[0].toAuthJSON());
-            return res.json({ user: users[0].toAuthJSON() });
+            return res.status(200).json({ user: users[0].toAuthJSON() });
         } else {
           console.log("Wrong credintials");
-          return res.send("Wrong credintials");
+          return res.status(400).send("Wrong credintials");
         }
     });
   }
@@ -53,7 +53,7 @@ usersRouter.post('/api/registration',auth.optional,(req,res,next) => {
     .then(item => {
       console.log("new user saved to database");
       console.log(newUser.toAuthJSON());
-      res.json({ user: newUser.toAuthJSON()});
+      res.status(200).json({ user: newUser.toAuthJSON()});
     })
     .catch(err => {
       res.status(400).send(err.errmsg);

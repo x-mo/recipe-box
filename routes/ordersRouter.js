@@ -5,37 +5,49 @@ const orderRouter = express.Router();
 
 orderRouter.get('/api',(req,res,next) => {
   OrderModel.OrderModel.find({}, (err, orders) => {
-      res.send(orders);
+    if(err)
+    res.status(400).send(err);
+      res.status(200).send(orders);
   })
 });
 
 orderRouter.get('/api/findByUsername/:name',(req,res) => {
   OrderModel.OrderModel.find({username : req.params.name}, (err, orders) => {
-    res.send(orders);
+    if(err)
+    res.status(400).send(err);
+    res.status(200).send(orders);
   });
 });
 
 orderRouter.get('/api/findOrder/:num',(req,res) => {
   OrderModel.OrderModel.find({orderNumber : ParseInt(req.params.num)}, (err, order) => {
-    res.send(order);
+    if(err)
+    res.status(400).send(err);
+    res.status(200).send(order);
   });
 });
 
 orderRouter.get('/api/findOpenOrders',(req,res) => {
   OrderModel.OrderModel.find({orderStatus : "Open"}, (err, orders) => {
-    res.send(orders);
+    if(err)
+    res.status(400).send(err);
+    res.status(200).send(orders);
   });
 });
 
 orderRouter.get('/api/findPendingOrders',(req,res) => {
   OrderModel.OrderModel.find({orderStatus : "Pending"}, (err, orders) => {
-    res.send(orders);
+    if(err)
+    res.status(400).send(err);
+    res.status(200).send(orders);
   });
 });
 
 orderRouter.get('/api/findClosedOrders',(req,res) => {
   OrderModel.OrderModel.find({orderStatus : "Done"}, (err, orders) => {
-    res.send(orders);
+    if(err)
+    res.status(400).send(err);
+    res.status(200).send(orders);
   });
 });
 
@@ -61,8 +73,8 @@ orderRouter.post('/api/add',(req,res,next) => {
 orderRouter.delete('/api/delete/:num', (req, res, next) => {
       OrderModel.OrderModel.deleteOne({orderNumber : req.params.num },(err) => {
       if(err)
-      res.send(err);
-      res.send("Deleted!");
+      res.status(400).send(err);
+      res.status(200).send("Deleted!");
     });
 
 });
@@ -70,8 +82,8 @@ orderRouter.delete('/api/delete/:num', (req, res, next) => {
 orderRouter.put('/api/update/:num', (req, res, next) => {
     OrderModel.OrderModel.findOneAndUpdate({orderNumber : req.params.num }, req.body, (err) =>{
     if(err)
-    res.send(err);
-    res.send("Updated!");
+    res.status(400).send(err);
+    res.status(200).send("Updated!");
   });
 
 })

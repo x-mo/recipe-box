@@ -4,12 +4,6 @@ const Joi = require('joi');
 
 const ingredientsRouter = express.Router();
 
-ingredientsRouter.get('/',(req,res,next) => {
-  ingredientModel.ingredientModel.find({}, (err, ingredients) => {
-      res.render("pages/ingredients/ingredients" ,{ingredients : ingredients});
-  })
-});
-
 ingredientsRouter.get('/api',(req,res,next) => {
   ingredientModel.ingredientModel.find({}, (err, ingredients) => {
       res.send(ingredients);
@@ -22,10 +16,6 @@ ingredientsRouter.get('/api/:name',(req,res) => {
   });
 });
 
-ingredientsRouter.get('/add',(req,res,next) => {
-  res.render("pages/ingredients/add");
-});
-
 ingredientsRouter.post('/api/add',(req,res,next) => {
   console.log(req.body);
   const result = Joi.validate(req.body, ingredientModel.ingredient);
@@ -34,8 +24,6 @@ ingredientsRouter.post('/api/add',(req,res,next) => {
   }
   else {
     const newingredient = new ingredientModel.ingredientModel(req.body);
-    // newingredient._id = 1;
-    // newingredient.__v = 2;
     newingredient.save()
     .then(item => {
       console.log("ingredient saved to database");
