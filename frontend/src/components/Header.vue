@@ -98,6 +98,8 @@ export default {
     } else {
       this.userEmail = this.$cookies.get("userEmail");
     }
+
+    this.isAdmin = this.$cookies.get("isAdmin");
   }
 };
 </script>
