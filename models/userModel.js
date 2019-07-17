@@ -35,7 +35,7 @@ userSchema.methods.generateJWT = function() {
 
   return jwt.sign({
     email: this.email,
-    id: this._id,
+    _id: this._id,
     username: this.username,
     exp: parseInt(expirationDate.getTime() / 1000, 10),
     is_admin: this.is_admin,
