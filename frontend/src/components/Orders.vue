@@ -1,7 +1,7 @@
 <template>
   <div class="container orders">
     <h1 class="title">Orders</h1>
-    <table class="table is-bordered is-stripedis-narrow is-hoverable is-fullwidth">
+    <table class="table is-bordered is-striped is-hoverable is-fullwidth">
       <thead>
         <tr>
           <th class="has-text-centered">Order#</th>
