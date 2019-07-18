@@ -60,7 +60,7 @@
         </p>
       </div>
     </form>
-    <table class="table is-bordered is-stripedis-narrow is-hoverable is-fullwidth">
+    <table class="table is-bordered is-striped is-hoverable is-fullwidth">
       <thead>
         <tr>
           <th class="has-text-centered">Name</th>
